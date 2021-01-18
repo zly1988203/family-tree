@@ -1,0 +1,136 @@
+/* pages/userinfo/uerinfo.wxss */
+.container {
+  background: #fff;
+  padding-top: 25px;
+}
+.page-content {
+  width: 100%;
+  height: calc(100% - 34px);
+}
+.page-content .main{
+  background: #f7f7f7;
+}
+.form-content{
+  background: #fff;
+  padding: calc(10vmin / 7.5) calc(30vmin / 7.5);
+  margin-top: calc(20vmin / 7.5);
+}
+.form-group{
+  line-height: 0;
+  padding: 0 calc(30vmin / 7.5);
+}
+.row_1_2{
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.form-group.inside .row_1_2 label{
+  left: 0;
+  top:calc(12vmin / 7.5);
+}
+.form-group .required label::after,.form-group.required label::after{
+  content: "*";
+  color: #ea3939;
+  vertical-align: baseline;
+  position: absolute;
+  top: 0;
+  right: calc(5vmin / 7.5);
+}
+.form-group .form-control{
+  height: calc(72vmin / 7.5);
+  line-height: calc(72vmin / 7.5);
+  font-size: calc(30vmin / 7.5);
+}
+.form-group.inside .form-control{
+  padding-left: calc(150vmin / 7.5);
+}
+.form-group:last-child .form-control{
+  border-bottom-color: transparent;
+}
+.form-group .form-control .picker{
+  font-size: calc(30vmin / 7.5);
+  color: #8e8e8e;
+  padding-right: calc(42vmin / 7.5);
+  text-align: right;
+  height: calc(72vmin / 7.5);
+  line-height: calc(72vmin / 7.5);
+}
+.form-group .input-group.picker .form-control{
+  text-align: right;
+}
+.form-group .form-control .picker::after,.form-group .input-group.picker .btn::before{
+  content: " ";
+  height: calc(14vmin / 7.5);
+  width: calc(14vmin / 7.5);
+  border: 1px solid #8e8e8e;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 45%;
+  right: calc(24vmin / 7.5);
+}
+.form-group .input-group.picker .btn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: calc(72vmin / 7.5)!important;
+  width: calc(42vmin / 7.5)!important;
+  line-height: calc(72vmin / 7.5)!important;
+  margin: 0!important;
+  overflow: hidden;
+}
+.form-group .input-group.picker .btn .picker{
+  display:block;
+  width:100%;
+  height:100%;
+  color: transparent;
+}
+.form-group.inside label{
+  font-size: calc(30vmin / 7.5);
+  height: calc(72vmin / 7.5);
+  line-height: calc(72vmin / 7.5);
+  width: calc(150vmin / 7.5);
+  left: calc(30vmin / 7.5);
+  text-align: justify;
+  text-justify: distribute-all-lines;
+  text-align-last: justify;
+  padding-right: calc(20vmin / 7.5);
+  box-sizing: border-box;
+}
+.form-group .input-group.number .form-control,.form-group .input-group.switch .form-control,.form-group .input-group.t_r .form-control{
+  text-align: right;
+}
+.form-group .input-group.number .form-control .btn{
+  display: inline-block!important;
+  height: calc(36vmin / 7.5)!important;
+  width: calc(36vmin / 7.5)!important;
+  border: 1px solid #ececec;
+  border-radius: calc(18vmin / 7.5)!important;
+  vertical-align: middle;
+  margin: 0!important;
+  padding: 0!important;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% auto;
+  min-height: 0!important;
+}
+.form-group .input-group.number .form-control .btn.add{
+  border: 1px solid #ebb450;
+}
+.form-group .input-group.number .form-control input{
+  margin: 0 calc(10vmin / 7.5);
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  height: calc(72vmin / 7.5);
+  line-height: calc(72vmin / 7.5);
+  width: calc(100vmin / 7.5);
+}
+.form-group .input-group.switch .form-control switch{
+  height: calc(72vmin / 7.5);
+  zoom:.6;
+}
+.btn-submit{
+  margin: calc(55vmin / 7.5) 0;
+}

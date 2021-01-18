@@ -1,0 +1,8 @@
+{
+  "pageOrientation": "portrait",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "nav-bar": "../../component/navbar/navbar",
+    "alert": "../../component/alert/alert"
+  }
+}

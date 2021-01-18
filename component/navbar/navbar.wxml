@@ -1,0 +1,23 @@
+<!--component/navbar/navbar.wxml-->
+<view class="nav-bar">
+  <navigator url="../home/home" class="{{active=='home'?'active':''}}" open-type="redirect">
+    <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/home_icon{{active=='home'?'_active':''}}.png')"></view>
+    <text>首页</text>
+  </navigator>
+  <navigator url="" class="{{active=='from'?'active':''}}" open-type="redirect" bindtap="alertBuild">
+    <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/search_icon{{active=='from'?'_active':''}}.png')"></view>
+    <text>寻根</text>
+  </navigator>
+  <navigator url="" class="{{active=='miss'?'active':''}}" open-type="redirect" bindtap="alertBuild">
+    <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/candle_icon{{active=='miss'?'_active':''}}.png')"></view>
+    <text>怀思</text>
+  </navigator>
+  <navigator url="" class="{{active=='edu'?'active':''}}" open-type="redirect" bindtap="alertBuild">
+    <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/book_mark_icon{{active=='edu'?'_active':''}}.png')"></view>
+    <text>学堂</text>
+  </navigator>
+  <navigator url="../index/index" class="{{active=='me'?'active':''}}" open-type="redirect">
+    <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/me_icon{{active=='me'?'_active':''}}.png')"></view>
+    <text>我的</text>
+  </navigator>
+</view>

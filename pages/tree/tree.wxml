@@ -1,0 +1,6 @@
+<!--pages/tree/tree.wxml-->
+<view class="container" style="display:block;width:100%;height:100%;padding:0;background: url('{{baseOss}}/attachment/images/tree_bg.jpg') center center no-repeat;background-size: 100% 100%;">
+  <view class="jp-content">
+    <jiapu-views id="jiapu" />
+  </view>
+</view>

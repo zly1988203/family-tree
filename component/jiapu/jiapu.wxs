@@ -1,0 +1,112 @@
+var isonetouch = true
+var onetouch = {
+  x: 0, y: 0
+}
+var twotouch = {
+  x1: 0, y1: 0, x2: 0, y2: 0
+}
+var touchmoving = false
+var jiapu_content
+var jiapu_circle
+var jiapu_members
+var jp_content_css = null;
+var jp_circle_css = null;
+var jp_member_len
+function moveStart(e, ownerInstance) {
+  if (e.touches.length == 1) {
+    isonetouch = true
+    onetouch = {
+      x: e.touches[0].pageX,
+      y: e.touches[0].pageY
+    }
+  } else if (e.touches.length == 2) {
+    isonetouch = false
+    twotouch = {
+      x1: e.touches[0].pageX,
+      y1: e.touches[0].pageY,
+      x2: e.touches[1].pageX,
+      y2: e.touches[1].pageY
+    }
+  }
+  jiapu_content = ownerInstance.selectAllComponents('.jiapu-content')[0]
+  jiapu_circle = ownerInstance.selectAllComponents('.jiapu-circle')[0]
+  jiapu_members = ownerInstance.selectAllComponents('.jiapu-member')
+  jp_member_len = jiapu_members.length
+  if (!jp_content_css) {
+    jp_content_css = {
+      top: jiapu_content.getDataset().top,
+      left: jiapu_content.getDataset().left,
+      scale: jiapu_content.getDataset().scale,
+      rotateX: jiapu_content.getDataset().rotatex,
+      rotateZ: jiapu_content.getDataset().rotatez,
+    }
+  }
+  console.log(jp_content_css.rotateX);
+  console.log(jp_content_css.rotateZ);
+  if (!jp_circle_css) {
+    jp_circle_css = {
+      rotate: jiapu_circle.getDataset().rotate,
+      scaleY: jiapu_circle.getDataset().scaley,
+    }
+  } 
+}
+function moveMove(e, ownerInstance) {
+  //if (!touchmoving){
+    //touchmoving = true
+    //setTimeout(function () { touchmoving=false;},40)
+    if (e.touches.length == 1 && isonetouch) {
+      var onePointDiffX = e.touches[0].pageX - onetouch.x
+      var onePointDiffY = e.touches[0].pageY - onetouch.y
+      jp_content_css.top = jp_content_css.top + onePointDiffY;
+      jp_content_css.left = jp_content_css.left + onePointDiffX;
+      jiapu_content.setStyle({
+        'top': jp_content_css.top + 'px',
+        'left': jp_content_css.left + 'px',
+        'transform': 'translate(-50%,-50%) rotateZ(' + (jp_content_css.rotateZ) + 'deg) rotateX(' + (jp_content_css.rotateX) + 'deg) scale(' + (jp_content_css.scale) + ')'
+      })
+      onetouch = {
+        x: e.touches[0].pageX,
+        y: e.touches[0].pageY
+      }
+    } else if (e.touches.length == 2) {
+      var preTwoPoint = JSON.parse(JSON.stringify(twotouch))
+      twotouch = {
+        x1: e.touches[0].pageX,
+        y1: e.touches[0].pageY,
+        x2: e.touches[1].pageX,
+        y2: e.touches[1].pageY
+      }
+      // 计算角度，旋转(优先)
+      var perAngle = preTwoPoint.x1 == preTwoPoint.x2 ? 90 : Math.atan((preTwoPoint.y1 - preTwoPoint.y2) / (preTwoPoint.x1 - preTwoPoint.x2)) * 180 / Math.PI
+      var curAngle = twotouch.x1 == twotouch.x2 ? 90 : Math.atan((twotouch.y1 - twotouch.y2) / (twotouch.x1 - twotouch.x2)) * 180 / Math.PI
+      if (Math.abs(perAngle - curAngle) > 1) {
+        jp_circle_css.rotate = jp_circle_css.rotate + (curAngle - perAngle)
+        jiapu_circle.setStyle({
+          'transform': 'translate(-50%,-50%) rotate(' + jp_circle_css.rotate+'deg)',
+        })
+        for (var i = 0; i < jp_member_len; i++) {
+          jiapu_members[i].setStyle({
+            'transform': 'rotateZ(' + (360 - jp_circle_css.rotate) + 'deg) rotateX(' + (0 - jp_content_css.rotateX) + 'deg) scaleY(' + (jp_circle_css.scaleY) + ')',
+          })
+        }
+      } else {
+        // 计算距离，缩放
+        var preDistance = Math.sqrt(Math.pow((preTwoPoint.x1 - preTwoPoint.x2), 2) + Math.pow((preTwoPoint.y1 - preTwoPoint.y2), 2))
+        var curDistance = Math.sqrt(Math.pow((twotouch.x1 - twotouch.x2), 2) + Math.pow((twotouch.y1 - twotouch.y2), 2))
+        jp_content_css.scale = jp_content_css.scale * (curDistance / preDistance)
+        console.log('translate(-50%,-50%) rotateZ(' + (jp_content_css.rotateZ) + 'deg) rotateX(' + (jp_content_css.rotateX) + 'deg) scale(' + (jp_content_css.scale) + ')')
+        jiapu_content.setStyle({
+          'transform': 'translate(-50%,-50%) rotateZ(' + (jp_content_css.rotateZ) + 'deg) rotateX(' + (jp_content_css.rotateX) + 'deg) scale(' + (jp_content_css.scale) +')'
+        })
+      }
+    }
+  //}
+}
+function moveEnd(event, ownerInstance) {
+  isonetouch = false
+}
+module.exports = {
+  moveStart: moveStart,
+  moveMove: moveMove,
+  moveEnd: moveEnd
+}

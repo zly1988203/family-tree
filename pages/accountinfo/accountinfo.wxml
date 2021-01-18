@@ -1,0 +1,44 @@
+<!--pages/accountinfo/accountinfo.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>账户信息</text>
+    <navigator hover-class="navigator-hover" open-type="navigateBack" delta="1">返回</navigator>
+  </view>
+  <view class="page-content">
+    <view class="main">
+      <view class="form-content">
+        <view class="form-group inside">
+          <label>姓名</label>
+          <view class="input-group t_r">
+            <view class="form-control">{{accountinfo.nickName?accountinfo.nickName:''}}</view>
+          </view>
+        </view>
+        <view class="form-group inside">
+          <label>手机</label>
+          <view class="input-group t_r">
+            <view class="form-control">{{accountinfo.mobile?accountinfo.mobile:''}}</view>
+          </view>
+        </view>
+        <view class="form-group inside">
+          <label>本谱编号</label>
+          <view class="input-group t_r">
+            <view class="form-control">{{accountinfo.familyid?accountinfo.familyid:''}}</view>
+          </view>
+        </view>
+        <view class="form-group inside">
+          <label>家谱卡号</label>
+          <view class="input-group t_r">
+            <view class="form-control">{{accountinfo.account?accountinfo.account:''}}</view>
+          </view>
+        </view>
+        <view class="form-group inside">
+          <label style="width: calc(300vmin / 7.5);">亲兄弟姐妹排行</label>
+          <view class="input-group t_r">
+            <view class="form-control" style="padding-left: calc(300vmin / 7.5);">{{accountinfo.childOrder?accountinfo.childOrder:''}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <alert id="alert"/>
+  </view>
+</view>

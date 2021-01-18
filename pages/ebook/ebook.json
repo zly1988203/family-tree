@@ -1,0 +1,6 @@
+{
+  "pageOrientation": "portrait",
+  "usingComponents": {
+    "jiapu-views": "../../component/ebook/ebook"
+  }
+}

@@ -1,0 +1,22 @@
+/* pages/initiate_sharing/initiate_sharing.wxss */
+.container {
+  background: #fff;
+  padding-top: 25px;
+}
+view{font-size: 32rpx;}
+.lists{display: flex;flex-direction: row;height: 96rpx;line-height: 96rpx;border-bottom: 1rpx solid #ededed;
+  margin: 0 30rpx;}
+.lists view:first-child{color: #333;width: 226rpx;}
+.lists view:last-child{color: #696969;}
+.tqm{display: flex;flex-direction: row;margin: 0 30rpx;padding: 26rpx 0 116rpx 0;}
+.tqm .tqm_left{width: 226rpx;}
+.tqm .tqm_right_top{display: flex;flex-direction: row;margin-bottom: 18rpx;}
+.tqm .tqm_right_top .code_num{height: 48rpx;text-align: center;line-height: 48rpx;font-size: 30rpx;padding: 0 20rpx;
+  margin-right: 26rpx;}
+.tqm .tqm_right_top .cope_btn{color: #ebb450;}
+.tqm .tqm_right_bottom{font-size: 22rpx;color: #8f8f8f;}
+.sharing_records{text-align: center;color: #696969;font-size: 28rpx;margin-bottom: 140rpx;}
+.share_ct{display: flex;justify-content: space-around}
+page .share_ct .share_ct_left{text-align: center;background:#fff;margin:0;padding:0;font-weight: 400;width: auto;}
+.share_ct image{width: 64rpx;height: 64rpx;margin-bottom: 10rpx;}
+page .share_ct .share_ct_right{text-align: center;background:#fff;margin:0;padding:0;font-weight: 400;width: auto;}

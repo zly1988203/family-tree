@@ -1,0 +1,18 @@
+/* pages/bind_tel/bind_tel.wxss */
+page{background: rgb(247, 247, 247);}
+.container {background: #fff;padding-top: 25px;height: auto;}
+view{font-size: 32rpx;color: #333;}
+.y_bind{height: 96rpx;line-height: 96rpx;padding: 0 30rpx;background: #fff;}
+.y_bind text{margin-right: 60rpx;}
+.view1{line-height: 76rpx;padding:0 30rpx;font-size: 26rpx;color: #696969;}
+.view2{background: #fff;}
+.tels{display: flex;flex-direction: row;height: 96rpx;line-height: 96rpx;margin:0 30rpx;
+  border-bottom: 1rpx solid #ededed;}
+.tels view:first-child,.yz_code view:first-child{width: 180rpx;}
+input{height: 96rpx;width: 372rpx;}
+
+.yz_code{display: flex;flex-direction: row;height: 96rpx;line-height: 96rpx;margin:0 30rpx;}
+.yz_code view:last-child{width: 142rpx;height: 44rpx;text-align: center;line-height: 44rpx;color: #ebb450;
+  border: 1rpx solid #ebb450;border-radius: 8rpx;font-size: 24rpx;margin-top: 24rpx;}
+.btns{margin: 60rpx 90rpx;border-radius: 40rpx;background: #ebb450;color: #fff;text-align: center;line-height: 80rpx;
+  font-weight: bold;}

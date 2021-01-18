@@ -1,0 +1,97 @@
+/* pages/setting/setting.wxss */
+.container {
+  background: #fff;
+  padding-top: 25px;
+}
+.page-content {
+  width: 100%;
+  height: calc(100% - 34px);
+}
+.page-content .main{
+  background: #f7f7f7;
+}
+.setting-content{
+  background: #fff;
+  padding: calc(10vmin / 7.5) calc(30vmin / 7.5);
+  margin-top: calc(20vmin / 7.5);
+}
+.setting-content .row{
+  width: 100%;
+  line-height: 96rpx;
+  font-size: calc(30vmin / 7.5);
+  border-bottom: 1px solid #e5e5e5;
+  height: 96rpx;
+  display: flex;
+  justify-content: space-between
+}
+.setting-content .row:last-child{
+  border-bottom: none;
+}
+.setting-content .row label{
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  height: calc(72vmin / 7.5);
+}
+.setting-content .row .show-tips{
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+  margin: calc(12vmin / 7.5) 0;
+  line-height: 0;
+  min-height: calc(72vmin / 7.5);
+}
+.setting-content .row .show-tips image{
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(60vmin / 7.5);
+  height: calc(60vmin / 7.5);
+  border-radius: calc(30vmin / 7.5);
+}
+.setting-content .row .show-tips .btn{
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(40vmin / 7.5)!important;
+  height: calc(72vmin / 7.5);
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+.setting-content .row .show-tips .picker{
+  line-height: calc(72vmin / 7.5);
+  font-size: calc(30vmin / 7.5);
+  color: #8f8f8f;
+  padding-right: calc(34vmin / 7.5);
+}
+.setting-content .row .show-tips .picker:after{
+  content: " ";
+  height: calc(14vmin / 7.5);
+  width: calc(14vmin / 7.5);
+  border: 1px solid #cfcfcf;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  top: 45%;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  right: calc(20vmin / 7.5);
+}
+.btn-logout{
+  color: #e8403a;
+  font-size: 32rpx;
+  margin: 0;
+}
+.row .btn-arrow:after{
+  content: " ";
+  height: calc(14vmin / 7.5);
+  width: calc(14vmin / 7.5);
+  border: 1px solid #cfcfcf;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 45%;
+  right: calc(20vmin / 7.5);
+}

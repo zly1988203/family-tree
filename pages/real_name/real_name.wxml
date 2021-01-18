@@ -1,0 +1,52 @@
+<!--pages/real_name/real_name.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>实名认证</text>
+    <navigator hover-class="navigator-hover" open-type="navigateBack" delta="1">返回</navigator>
+  </view>
+</view>
+<view class="bodys">
+  <view class="view">
+    <view>真实姓名</view>
+    <input placeholder="请输入真实姓名" value="{{realyName}}" bindinput="input_name"></input>
+  </view>
+  <view class="view">
+    <view>身份证号</view>
+    <input placeholder="请输入身份证号" value="{{idcard}}" bindinput="idcard" type="idcard" maxlength="18"></input>
+  </view>
+  <!-- <view class="view">
+    <view>身份证到期时间</view>
+    <picker mode="date" value="{{exprieTime}}" start="1900-01-01" bindchange="bindDateChange">
+      <view class="picker" wx:if='{{exprieTime==""}}'>请输入身份证到期时间</view>
+      <view class="picker" wx:else>{{exprieTime}}</view>
+    </picker>
+  </view> -->
+  <view class="view view2">
+    <view>身份证照片</view>
+    <view class="huangse" bindtap="dak">拍摄示例</view>
+  </view>
+  <view class="view3">
+    <view class="sf_image">
+      <view class="real_name_icon" bindtap="changeAvatar" data-i="1">
+        <image src="{{idcardFrontUrl || z_img}}"></image>
+      </view>
+      <view>请上传身份证正面</view>
+    </view>
+    <view class="sf_image">
+      <view class="real_name_icon" bindtap="changeAvatar" data-i="2">
+        <image src="{{idcardBackUrl || f_img}}"></image>
+      </view>
+      <view>请上传身份证反面</view>
+    </view>
+  </view>
+</view>
+<view class="btns" bindtap="submission">提交</view>
+<block wx:if='{{is_ok}}'>
+  <view class="zhezhao"></view>
+  <view class="example">
+    <view class="x" bindtap="qux"></view>
+    <view class="titles">身份证图片示例</view>
+    <view class="f_titles">清晰拍摄，证件上文字清晰可见，露出四个边角，勿压边拍摄，避免反光</view>
+    <image src="{{baseOss}}/attachment/images/real_name_icon3.png"></image>
+  </view>
+</block>

@@ -1,0 +1,130 @@
+/**index.wxss**/
+.container {
+  background: #fff;
+  padding-top: 25px;
+}
+.main{
+  background: #f7f7f7;
+}
+.user-info{
+  width: 100%;
+  padding-top: 45rpx;
+  background: center top no-repeat;
+  background-size: 100% auto;
+  text-align: center;
+  background-color: #fff;
+  padding-bottom: calc(10vmin / 7.5);
+}
+.user-info .info-box{
+  width: 675rpx;
+  height: 210rpx;
+  margin: 0 auto;
+  padding: 30rpx;
+  z-index: 1;
+  font-size: 0;
+  background: #fff;
+  border-radius: 6rpx;
+}
+.user-info .info-box::before{
+  content: " ";
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.user-info .info-box .avatar{
+  display: inline-block;
+  vertical-align: middle;
+  width: 102rpx;
+  height: 102rpx;
+  border-radius: 51rpx;
+  overflow: hidden;
+}
+.user-info .info-box .avatar image{
+  width: 100%;
+  height: 100%;
+}
+.user-info .info-box .detail{
+  width: calc(100%  - 102rpx);
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 20rpx;
+  text-align: left;
+}
+.user-info .info-box .detail .nickname{
+  color:#333333;
+  font-size: 32rpx;
+}
+.user-info .info-box .detail .account{
+  color: #696969;
+  font-size: 26rpx;
+}
+.user-info .shadow{
+  box-shadow: 0 0 calc(10vmin / 7.5) calc(2vmin / 7.5) #f1e6db;
+  width: 640rpx;
+  margin: 0 auto;
+  height: 1px;
+  background: #f1e6db;
+}
+.show-style{
+  padding: 40rpx 10rpx 10rpx;
+  font-size: 0;
+  display: flex;
+  background: #fff;
+}
+.show-style .item{
+  flex: 1;
+  text-align: center;
+}
+.show-style .item .navigator{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.show-style .item image{
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+}
+.show-style .item text{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 64rpx;
+  color: #696969;
+}
+.nav-list{
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+  background: #fff;
+}
+.nav-list .row{
+  border-bottom: 1px solid #ededed;
+  height: 98rpx;
+  line-height: 97rpx;
+}
+.nav-list .row:last-child{
+  border-bottom: none;
+}
+.nav-list .btn-logout{
+  color: #e8403a;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+.btn-setting{
+  position: absolute;
+  right: calc(30vmin / 7.5);
+  top: 50%;
+  width: 40rpx!important;
+  height: 40rpx!important;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  margin: 0;
+  transform: translateY(-50%);
+}

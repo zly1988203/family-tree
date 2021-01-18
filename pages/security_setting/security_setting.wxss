@@ -1,0 +1,12 @@
+/* pages/security_setting/security_setting.wxss */
+page{background: rgb(247, 247, 247);}
+.container {background: #fff;padding-top: 25px;height: auto;}
+view{font-size: 32rpx;}
+.bodys{margin: 20rpx 0;padding: 0 30rpx;background: #fff;}
+.bodys .help_list{border-bottom: 1rpx solid #ededed;height: 96rpx;line-height: 96rpx;display: flex;
+  justify-content: space-between;}
+.bodys .help_list .rights{display: flex;flex-direction: row;font-size:26rpx;}
+.bodys .help_list .right_icon{width: 18rpx;height: 18rpx;border-top: 4rpx solid #cfcfcf;
+    border-right: 4rpx solid #cfcfcf;transform: rotate(45deg);margin-top: 38rpx;}
+.bodys .help_list .password{color: #696969;margin-right: 20rpx;}
+.bodys .help_list:last-child{border: 0;width: 100%;}

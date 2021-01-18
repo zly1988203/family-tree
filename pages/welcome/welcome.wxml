@@ -1,0 +1,15 @@
+<!--pages/welcome/welcome.wxml-->
+<swiper duration="200" previous-margin="0rpx" next-margin="0rpx" autoplay="{{false}}" bindchange="currentHandle" circular="{{false}}" class="swiper-out">
+  <block wx:for="{{punchList}}" wx:key="index">
+    <swiper-item class="swp-item {{current === index ?'active-item': ''}}">
+      <view class="slide-image" style=" background: url({{item.bannerUrl}}) no-repeat center center;background-size: 100% 100%;" id="{{index}}"></view>
+      <block wx:if="{{index==punchList.length-1}}">
+      <button class="enter" bindtap="enterApp">马上体验</button>
+      </block>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="swp-dot">
+  <view class="square-12 m-r-8 {{current === index ?'active': ''}}" wx:for="{{punchList}}" wx:key="index"></view>
+</view>
+<alert id="alert"/>

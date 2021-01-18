@@ -1,0 +1,55 @@
+<!--pages/initiate_sharing/initiate_sharing.wxml--> 
+<view class="container"> 
+  <view class="title-bar"> 
+    <text>分享</text> 
+    <navigator hover-class="navigator-hover" open-type="navigateBack" delta="1">返回</navigator> 
+  </view> 
+  <view class="lists"> 
+    <view>家谱序号</view> 
+    <view>{{shareInfo.family.id}}</view> 
+  </view> 
+  <view class="lists"> 
+    <view>姓氏</view> 
+    <view>{{shareInfo.family.firstname}}</view> 
+  </view> 
+  <view class="lists"> 
+    <view>名称</view> 
+    <view>{{shareInfo.family.name}}</view> 
+  </view> 
+  <view class="lists"> 
+    <view>堂号</view> 
+    <view>{{shareInfo.family.nameOfHall}}</view> 
+  </view> 
+  <view class="lists"> 
+    <view>支系</view> 
+    <view>{{shareInfo.family.genealogyName}}</view> 
+  </view> 
+  <view class="lists"> 
+    <view>分享节点</view> 
+    <view>{{shareInfo.startMemberName}}</view> 
+  </view> 
+  <view class="tqm"> 
+    <view class="tqm_left">提取码</view> 
+    <view class="tqm_right"> 
+      <view class="tqm_right_top"> 
+        <view class="code_num" style="background-image:url({{baseOss}}/attachment/images/share_icon03.png)">{{shareCode}}</view> 
+        <view class="cope_btn" bindtap="copy_code">复制</view>
+      </view>
+      <view class="tqm_right_bottom">仅限拥有提取码者可以修谱，更加隐私安全</view> 
+    </view>
+  </view> 
+  <block wx:if='{{shareInfo.history}}'>
+    <navigator class="sharing_records" wx:if='{{is_share}}' open-type="navigateBack" delta="1">分享记录 ></navigator>
+    <navigator class="sharing_records" wx:else open-type="navigate" url="../share/share">分享记录 ></navigator>
+  </block>
+  <view class="share_ct"> 
+    <button class="share_ct_left" hover-class='none' open-type="share">
+      <image src="{{baseOss}}/attachment/images/share_icon01.png"></image> 
+      <view>发送给朋友</view>
+    </button>
+    <navigator class="share_ct_right" open-type="navigate" url="../save_pictures/save_pictures?familyId={{shareInfo.familyId}}&id={{shareInfo.id}}" hover-class='none'>
+      <image src="{{baseOss}}/attachment/images/share_icon02.png"></image> 
+      <view>保存为图片</view> 
+    </navigator> 
+  </view> 
+</view>

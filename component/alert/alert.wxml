@@ -1,0 +1,72 @@
+<block wx:if="{{type=='tips' && show}}">
+  <view class="sweet-tips" style="background:{{css.tips.background}};">
+    <text style="color:{{css.tips.color}}">{{msg}}</text>
+    <button class="close" style="background-image:url('{{css.tips.close}}');" bindtap="hide"></button>
+  </view>
+</block>
+<block wx:if="{{type=='alert' && show}}">
+  <view class="sweet-tips" style="background:{{css.tips.background}};">
+    <text style="color:{{css.tips.color}}">{{msg}}</text>
+    <button class="close" style="background-image:url('{{css.tips.close}}');" bindtap="hide"></button>
+  </view>
+</block>
+<block wx:if="{{type=='list' && show}}">
+  <view class="sweet-list">
+    <view class="cover" bindtap="coverClick"></view>
+    <view class="sweet-list-content">
+      <radio-group class="radio-group" bindchange="listCheck" data-name="list.data" data-type="checkbox">
+          <radio class="radio {{index==list.value?'active':''}}" wx:for-items="{{list.data}}" wx:key="name" value="{{index}}" checked="{{index==list.value}}">
+              <text>{{item.name}}</text>
+          </radio>
+      </radio-group>
+      <text class="help-block">请选择哪个账号是您的家谱</text>
+      <button class="btn btn-submit" bindtap="listSubmit">{{list.btn}}</button>
+    </view>
+  </view>
+</block>
+<block wx:if="{{type=='loading' && show}}">
+  <view class="sweet-loading" catchtouchmove="true">
+    <view class="cover" bindtap="coverClick"></view>
+    <view class="sweet-loading-content">
+      <view class="loading-logo {{loadingIcon}}">
+      </view>
+      <text>{{msg}}</text>
+    </view>
+  </view>
+</block>
+<block wx:if="{{type=='payment' && show}}">
+  <view class="sweet-payment" catchtouchmove="true">
+    <view class="cover"></view>
+    <view class="payment-content">
+      <image src="{{payinfo.qrcode}}"></image>
+      <view class="payment-info">请使用<text class="tips">{{payinfo.type=='weixin'?'微信':'支付宝'}}</text>扫码，支付<text class="tips">{{payinfo.total_fee}}</text>元</view>
+      <button class="btn close" style="background-image:url('{{css.tips.close}}');" bindtap="closePayment"></button>
+    </view>
+  </view>
+</block>
+<block wx:if="{{type=='image' && show}}">
+  <view class="sweet-image">
+    <view class="cover" catchtouchmove="true"></view>
+    <view class="image-content">
+      <view class="image-select-content" id="image_select_content">
+        <view class="image-show" style="width:{{imageinfo.showwidth}}px;height:{{imageinfo.showheight}}px;">
+          <image src="{{imageinfo.tempFilePath}}" style="width:{{imageinfo.showwidth}}px;height:{{imageinfo.showheight}}px;"></image>
+          <view class="image-cover">
+          </view>
+          <view class="image-select" style="top:{{imageinfo.top}}px;left:{{imageinfo.left}}px;width:{{imageinfo.width}}px;height:{{imageinfo.height}}px;background-image:url('{{imageinfo.imagedata}}');background-size:{{imageinfo.showwidth}}px {{imageinfo.showheight}}px;background-position:{{-imageinfo.left}}px {{-imageinfo.top}}px;" data-type="c" catchtouchstart='imageMoveStart' catchtouchmove='imageMoveMove' catchtouchend='imageMoveEnd'>
+            <view class="image-c"></view>
+            <view class="image-t-l" data-type="tl" catchtouchstart='imageMoveStart' catchtouchmove='imageMoveMove' catchtouchend='imageMoveEnd'></view>
+            <view class="image-t-r" data-type="tr" catchtouchstart='imageMoveStart' catchtouchmove='imageMoveMove' catchtouchend='imageMoveEnd'></view>
+            <view class="image-b-l" data-type="bl" catchtouchstart='imageMoveStart' catchtouchmove='imageMoveMove' catchtouchend='imageMoveEnd'></view>
+            <view class="image-b-r" data-type="br" catchtouchstart='imageMoveStart' catchtouchmove='imageMoveMove' catchtouchend='imageMoveEnd'></view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-content">
+        <button class="btn btn-cancel" bindtap="closeImage">取消</button>
+        <button class="btn btn-submit" bindtap="imageSubmit">确定</button>
+      </view>
+    </view>
+    <canvas canvas-id="image_cut" class="image-canvas" style="width: {{imageinfo.canvaswidth}}px; height: {{imageinfo.canvasheight}}px;" catchtouchmove='true'></canvas>
+  </view>
+</block>

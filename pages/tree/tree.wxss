@@ -1,0 +1,13 @@
+/* pages/tree/tree.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.jp-content{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}

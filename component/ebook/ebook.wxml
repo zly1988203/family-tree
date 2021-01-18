@@ -1,0 +1,85 @@
+<!--component/ebook/ebook.wxml-->
+<view class="jiapu-outside-box">
+  <view class="jiapu-search-form">
+    <view class="form-group inside">
+      <view class="input-group">
+        <view class="icon icon-search" style="background-image:url('{{baseOss}}/attachment/images/index_search_bg.png')"></view>
+        <input type="text" class="form-control" bindinput="inputgetName" data-name="search_form.keywords" value="{{search_form.keywords}}" placeholder="请输入家谱书页、姓氏等" />
+      </view>
+      <button class="btn btn-search" catchtap="searchSubmit">搜索</button>
+    </view>
+  </view>
+  <view class="jiapu-content">
+    <view class="jiapu-next-end {{showNextEnd?'active':''}}">已经到底了</view>
+    <view class="jiapu-show " style="{{(!showNextEnd && showPrevEnd)?'margin-left:calc(-74vmin / 7.5)':''}}">
+      <view class="jiapu-box">
+        <movable-area class="jiapu-base" id="jiapu_outside_box">
+          <movable-view class="member-list" id="jiapu_inside_box" direction="horizontal" inertia="true" bindchange="changeJiapu" style="width:calc({{inbox.width}}vmin / 7.5)">
+            <block wx:for="{{member_list}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+              <view class="member-item" style="width:calc({{item.width}}vmin / 7.5);">
+                <view class="shi" style="height:calc({{height.level}}vmin / 7.5);">
+                  <view class="text" style="font-size:calc({{fontSize.level}}vmin / 7.5);line-height:calc({{lineHeight.level}}vmin / 7.5);">{{item.shi}}</view>
+                </view>
+                <view class="zi" style="height:calc({{height.zi}}vmin / 7.5);">
+                  <view class="text" style="font-size:calc({{fontSize.zi}}vmin / 7.5);line-height:calc({{lineHeight.zi}}vmin / 7.5);">{{item.zi}}</view>
+                </view>
+                <view class="other" style="height:calc({{height.other}}vmin / 7.5);">
+                  <view class="text" style="font-size:calc({{fontSize.other}}vmin / 7.5);line-height:calc({{lineHeight.other}}vmin / 7.5);">{{item.other}}</view>
+                </view>
+                <view class="name" style="height:calc({{height.name}}vmin / 7.5);">
+                  <view class="text" style="font-size:calc({{fontSize.name}}vmin / 7.5);line-height:calc({{lineHeight.name}}vmin / 7.5);">{{item.name}}</view>
+                </view>
+                <view class="desc" style="height:calc(100% - {{height.level}}vmin / 7.5 - {{height.zi}}vmin / 7.5 - {{height.other}}vmin / 7.5 - {{height.name}}vmin / 7.5);">
+                  <view class="text" style="font-size:calc({{fontSize.desc}}vmin / 7.5);line-height:calc({{lineHeight.desc}}vmin / 7.5);">{{item.desc}}</view>
+                </view>
+              </view>
+            </block>
+          </movable-view>
+        </movable-area>
+        <view class="jiapu-info">
+          <view class="jiapu-title" style="height:calc({{height.level}}vmin / 7.5 + {{height.zi}}vmin / 7.5 + {{height.other}}vmin / 7.5 + {{height.name}}vmin / 7.5);">测试族谱</view>
+          <view class="jiapu-detail" style="height:calc(100% - {{height.level}}vmin / 7.5 - {{height.zi}}vmin / 7.5 - {{height.other}}vmin / 7.5 - {{height.name}}vmin / 7.5 - 120vmin / 7.5);">
+            <view class="row">
+              <view class="name">测试世系</view>
+              <!--<view class="page">一</view>-->
+            </view>
+            <view class="row">公元二零一九年</view>
+          </view>
+          <view class="jiapu-tang">开发中</view>
+        </view>
+      </view>
+    </view>
+    <view class="jiapu-prev-end {{(!showNextEnd && showPrevEnd)?'active':''}}">已经到顶了</view>
+  </view>
+  <view class="jiapu-searchlist-content {{showsearchlist?'active':''}}">
+    <view class="cover"></view>
+    <view class="search-list-dialog">
+      <view class="title">搜索结果</view>
+      <view class="close" style="background-image:url('{{baseOss}}/attachment/images/search_close.png')" bindtap="closeSearchList"></view>
+      <view class="search-result">
+        <view class="result-title">
+          <view class="cloumn avatar">头像</view>
+          <view class="cloumn name">姓名</view>
+          <view class="cloumn zi">字</view>
+          <view class="cloumn sex">性别</view>
+          <view class="cloumn father">父亲</view>
+          <view class="cloumn mother">母亲</view>
+          <view class="cloumn relationship">关系</view>
+        </view>
+        <view class="result-list">
+          <block wx:for="{{searchlist}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+            <view class="result-item" bindtap="choseResult" data-id="{{idx}}">
+              <view class="cloumn avatar"><image src="{{item.gender=='M'?baseOss + '/attachment/images/detail_men.jpg':baseOss + '/attachment/images/detail_female.jpg'}}"></image></view>
+              <view class="cloumn name">{{item.firstname}}{{item.lastname}}</view>
+              <view class="cloumn zi">{{item.zi?item.zi:''}}</view>
+              <view class="cloumn sex">{{item.gender=='M'?'男':'女'}}</view>
+              <view class="cloumn father">{{item.father?item.father.firstname+item.father.lastname:''}}</view>
+              <view class="cloumn mother">{{item.mother?item.mother.firstname+item.mother.lastname:''}}</view>
+              <view class="cloumn relationship">{{childType[item.childType]}}</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

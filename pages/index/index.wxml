@@ -1,0 +1,90 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>个人中心</text>
+  </view>
+  <view class="page-content">
+    <view class="main">
+      <view class="user-info" style="background-image:url('{{baseOss}}/attachment/images/usercenter_bg.png');">
+        <view class="info-box">
+          <view class="avatar"><image src="{{userInfo.avatarUrl?userInfo.avatarUrl:baseOss + '/attachment/images/avatar-none.png'}}" binderror="noAvatar"></image></view>
+          <view class="detail">
+            <view class="nickname">{{userInfo.nickName}}</view>
+            <view class="account">家谱帐号：{{userInfo.account}}</view>
+          </view>
+          <view class="btn btn-setting" bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../setting/setting" style="background-image:url('{{baseOss}}/attachment/images/index_setting_icon.png');"></view>
+        </view>
+        <view class="shadow"></view>
+      </view>
+      <view class="show-style">
+        <view class="item">
+          <view bindtap="alertBuild" class="navigator">
+            <image src="{{baseOss}}/attachment/images/index_myorder.png"></image>
+            <text>我的订单</text>
+          </view>
+        </view>
+        <view class="item">
+          <view bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../share/share" class="navigator">
+            <image src="{{baseOss}}/attachment/images/index_myshare.png"></image>
+            <text>我的分享</text>
+          </view>
+        </view>
+        <view class="item">
+          <view bindtap="alertBuild" class="navigator">
+            <image src="{{baseOss}}/attachment/images/index_mylincense.png"></image>
+            <text>权限升级</text>
+          </view>
+        </view>
+      </view>
+      <view class="nav-list">
+        <view class="row">
+          <view bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../family_culture/family_culture" class="navigator">
+            <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/paper_icon.png')"></view>
+            <text>家族文化</text>
+          </view>
+        </view>
+        <view class="row">
+          <view url="" bindtap="alertBuild" class="navigator">
+            <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/list_icon.png')"></view>
+            <text>成长轨迹</text>
+          </view>
+        </view>
+        <view class="row">
+          <view bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../family_album/family_album" class="navigator">
+            <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/image_icon.png')"></view>
+            <text>家族相册</text>
+          </view>
+        </view>
+      </view>
+      <view class="nav-list">
+        <view class="row">
+          <view url="" bindtap="alertBuild" class="navigator">
+            <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/circle_icon.png')"></view>
+            <text>亲缘圈</text>
+          </view>
+        </view>
+        <view class="row">
+          <view url="" bindtap="alertBuild" class="navigator">
+            <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/member_icon.png')"></view>
+            <text>通讯录</text>
+          </view>
+        </view>
+      </view>
+      <view class="nav-list" style="margin-bottom:100rpx;">
+        <view class="row">
+          <view bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../setting/setting" class="navigator">
+            <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/index_setting_icon.png')"></view>
+            <text>个人设置</text>
+          </view>
+        </view>
+        <view class="row">
+          <view bindtap="doNav" data-url="../help_center/help_center" class="navigator">
+            <view class="icon" style="background-image:url('{{baseOss}}/attachment/images/help_icon.png')"></view>
+            <text>帮助中心</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <nav-bar id="nav-bar" />
+</view>

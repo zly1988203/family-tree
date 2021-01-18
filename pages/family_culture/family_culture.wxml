@@ -1,0 +1,7 @@
+<!--pages/family_culture/family_culture.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>家族文化</text>
+    <navigator hover-class="navigator-hover" open-type="navigateBack" delta="1">返回</navigator>
+  </view>
+</view>

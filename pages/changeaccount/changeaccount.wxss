@@ -1,0 +1,47 @@
+/* pages/changeaccount/changeaccount.wxss */
+.container {
+  background: #fff;
+  padding-top: 25px;
+}
+.page-content {
+  width: 100%;
+  height: calc(100% - 34px);
+}
+.page-content .main{
+  background: #f8f8f8;
+}
+.title{
+  padding: 0 calc(30vmin / 7.5);
+  font-size: calc(42vmin / 7.5);
+  color: #121212;
+  line-height: calc(120vmin / 7.5);
+}
+.account-list{
+  padding: 0 calc(30vmin / 7.5);
+  background: #fff;
+}
+.account-list .account-item{
+  font-size: calc(32vmin / 7.5);
+  color: #333333;
+  line-height: calc(120vmin / 7.5);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: calc(1vmin / 7.5) solid #ededed;
+}
+.account-list .account-item:last-child{border-bottom: 0;}
+page .account-list .account-item view{font-size: calc(32vmin / 7.5);}
+.account-list .account-item.active{
+  color: #ebb450;
+}
+/* .account-list .account-item.active:after{
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 40%;
+  width: calc(30vmin / 7.5);
+  height: calc(15vmin / 7.5);
+  border: 1px solid #ebb450;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(-60deg) translateY(-50%);
+} */

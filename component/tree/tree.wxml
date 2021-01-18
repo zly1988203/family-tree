@@ -1,0 +1,189 @@
+<!--component/tree/tree.wxml-->
+<view class="jiapu-outside-box" id="jiapu_outside_box" bindtouchstart='moveStart' bindtouchmove='moveMove' bindtouchend='moveEnd' catchtap="hideEdit">
+  <view class="jiapu-content jiapu-base" style="width:{{jiapu_content_css.width}}px;height:{{jiapu_content_css.height}}px;position:absolute;z-Index:1;background-Position:center;background-Size:100% 100%;transform: translate(-50%,-50%) scale({{scale}});-webkit-transform:translate(-50%,-50%) scale({{scale}});left:{{jiapu_content_css.left}}px;top:{{jiapu_content_css.top}}px;">
+    <image class="jiapu-bg-img" src="{{jiapu_content_css.backgroundImagePath}}"></image>
+    <block wx:for="{{member_list}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+      <view catchtap="handleClick" catchlongpress="handleLongTap" data-id="{{idx}}" style="z-index:1;color:{{item.css.color}};position:absolute;cursor:pointer;border-Width:{{item.css.borderWidth}}px;border-Style:solid;border-Color:{{item.css.borderColor}};width:{{item.css.width}}px;height:{{item.css.height}}px;border-Radius:{{item.css.borderRadius}}px;font-Size:{{item.css.fontSize}}px;line-Height:{{item.css.lineHeight}}px;background:{{item.css.background}};text-Align:center;top:{{item.css.top}}px;left:{{item.css.left}}px;transform: translate(-50%,-50%);">
+        <view class="avatar" style="z-index:1;background:url('{{item.css.avatar}}') center center no-repeat;background-size:100% 100%;border-Width:{{item.css.borderWidth}}px;border-Style:solid;border-Color:{{item.css.borderColor}};position:absolute;width:{{item.css.height + 8}}px;height:{{item.css.height + 8}}px;border-Radius:{{item.css.borderRadius + 4}}px;top:-5px;left:-1px;"></view>
+        <text style="z-index:1;color:{{item.css.color}};padding-left:{{item.css.height + 8}}px;padding-right:{{item.css.borderRadius}}px;height:{{item.css.height - 2}}px;line-height:{{item.css.height - 2}}px;display:block;width:calc(100% - {{item.css.height + 8}}px - {{item.css.borderRadius}}px);text-align:center;overflow:hidden;">{{item.name}}</text>
+      </view>
+    </block>
+    <view class="jiapu-operation-group {{showop?'active':''}}" style="width:{{name_width}}px;padding:0 {{name_width*0.15}}px;left:{{editinfo.left}}px;top:{{editinfo.top}}px;border-Radius:{{name_width*0.06}}px;">
+      <block wx:for="{{editinfo.btns}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+        <button class="btn btn-edit-member-item" catchtap="{{item.tap}}">
+          <text style="font-size:{{name_fontsize + 2}}px;line-height:{{name_height*1.5}}px;">{{item.name}}</text>
+        </button>
+      </block>
+    </view>
+  </view>
+  <view wx:if="{{backBtn}}" catchtap="naviback" class="jiapu-goback btn" style="background-image:url('{{baseOss}}/attachment/images/tree_btn_bg.png')">
+  </view>
+  <!--
+  <view class="jiapu-help">
+    <button class="btn btn-help" style="background-image:url('{{baseOss}}/attachment/images/circle_btn_bg.png')" bindtap="showHelpTips">?</button>
+    <view class="jiapu-help-info {{showhelp?'active':''}}">
+      <view class="content">
+        <text class="title">颜色含义</text>
+        <text>男丁: 红色</text>
+        <text>女丁: 蓝色</text>
+        <text>妻子: 蓝色</text>
+        <text>长子: 红色+金色圆环</text>
+        <text>长女: 蓝色+金色圆环</text>
+        <text>灰色: 去世</text>
+      </view>
+    </view>
+  </view>
+  -->
+  <view class="jiapu-operation">
+    <view wx:if="{{searchBtn}}" class="jiapu-search">
+      <button class="btn btn-search" style="background-image:url('{{baseOss}}/attachment/images/tree_btn_bg.png')" bindtap="showSearchForm"><view class="icon" style="background-image:url('{{baseOss}}/attachment/images/circle_search_bg.png')"></view></button>
+    </view>
+    <view wx:if="{{levelBtn}}" class="jiapu-levels" style="background-image:url('{{baseOss}}/attachment/images/tree_btn_bg.png')">
+      <view class="level-select {{showChangeLevels?'active':''}}">
+        <button class="btn btn-select" bindtap="changeLevels" data-levels="3">三世</button>
+        <button class="btn btn-select" bindtap="changeLevels" data-levels="5">五世</button>
+      </view>
+      <text class="now-levels" bindtap="showChangeLevels">{{levelName}}</text>
+    </view>
+  </view>
+  <view class="jiapu-searchlist-content {{showsearchlist?'active':''}}" catchtouchmove="true">
+    <view class="cover"></view>
+    <view class="search-list-dialog">
+      <view class="title">搜索结果</view>
+      <view class="close" style="background-image:url('{{baseOss}}/attachment/images/search_close.png')" bindtap="closeSearchList"></view>
+      <view class="search-result">
+        <view class="result-title">
+          <view class="cloumn avatar">头像</view>
+          <view class="cloumn name">姓名</view>
+          <view class="cloumn zi">字</view>
+          <view class="cloumn sex">性别</view>
+          <view class="cloumn father">父亲</view>
+          <view class="cloumn mother">母亲</view>
+          <view class="cloumn relationship">关系</view>
+        </view>
+        <scroll-view class="result-list" scroll-y="true">
+          <block wx:for="{{searchlist}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+            <view class="result-item" bindtap="choseResult" data-id="{{idx}}">
+              <view class="cloumn avatar"><image src="{{item.gender=='M'?baseOss + '/attachment/images/detail_men.jpg':baseOss + '/attachment/images/detail_female.jpg'}}"></image></view>
+              <view class="cloumn name">{{item.firstname}}{{item.lastname}}</view>
+              <view class="cloumn zi">{{item.zi?item.zi:''}}</view>
+              <view class="cloumn sex">{{item.gender=='M'?'男':'女'}}</view>
+              <view class="cloumn father">{{item.father?item.father.firstname+item.father.lastname:''}}</view>
+              <view class="cloumn mother">{{item.mother?item.mother.firstname+item.mother.lastname:''}}</view>
+              <view class="cloumn relationship">{{childType[item.childType]}}</view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <view class="jiapu-search-form {{showsearch?'active':''}}">
+    <view class="cover"></view>
+    <view class="form-dialog">
+      <text class="title">人员查找</text>
+      <view class="close" style="background-image:url('{{baseOss}}/attachment/images/search_close.png')" bindtap="closeSearchForm"></view>
+      <view class="form-group">
+        <label>姓名</label>
+        <view class="input-group">
+          <input type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="search_form.fullname" value="{{search_form.fullname}}" placeholder="请输入姓加名" />
+        </view>
+      </view>
+      <view class="form-group">
+        <label>姓字</label>
+        <view class="input-group">
+          <input type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="search_form.namezi" value="{{search_form.namezi}}" placeholder="请输入姓加字" />
+        </view>
+      </view>
+      <!--
+      <text class="title">辅助项</text>
+      <view class="form-group">
+        <label>父亲</label>
+        <view class="input-group">
+          <input type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="search_form.fname" value="{{search_form.fname}}" placeholder="请输入父亲姓名" />
+        </view>
+      </view>
+      <view class="form-group">
+        <label>母亲</label>
+        <view class="input-group">
+          <input type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="search_form.mname" value="{{search_form.mname}}" placeholder="请输入母亲姓名" />
+        </view>
+      </view>
+      -->
+      <view class="form-group" style="margin-top: calc(15vmin / 7.5);text-align:center;">
+        <button class="btn btn-submit" bindtap="searchSubmit">确定</button>
+      </view>
+    </view>
+  </view>
+  <view class="jiapu-detail-info {{showdetail?'active':''}}">
+    <view class="cover"></view>
+    <view class="info-dialog">
+      <view class="close" style="background-image:url('{{baseOss}}/attachment/images/search_close.png')" bindtap="closeDetailInfo"></view>
+      <view class="member-detail">
+        <view class="avatar"><image src="{{baseOss}}/attachment/images/detail_{{detailinfo.gender=='M'?'men':'female'}}.jpg"></image></view>
+        <view class="info">
+          <view class="line"><text class="name">{{detailinfo.name}}</text></view>
+          <view class="line"><label>出生日期</label><text>{{detailinfo.birthTime}}</text></view>
+          <view class="line" wx:if="{{!detailinfo.isLiving}}"><label>逝世日期</label><text>{{detailinfo.deathTime}}</text></view>
+          <view class="line" wx:if="{{!detailinfo.isLiving}}"><label>享年</label><text>{{detailinfo.age}}</text></view>
+          <view class="line"><label>祖籍</label><text>{{detailinfo.originAreaDetails}}</text></view>
+        </view>
+      </view>
+      <view class="parent-detail">
+        <view class="father">
+          <view class="avatar" style="background-image:url('{{baseOss}}/attachment/images/detail_men.jpg')"></view>
+          <view class="info">
+            <view class="line"><label>父亲</label></view>
+            <view class="line"><text>{{detailinfo.fatherName}}</text></view>
+          </view>
+        </view>
+        <view class="mother">
+          <view class="avatar" style="background-image:url('{{baseOss}}/attachment/images/detail_female.jpg')"></view>
+          <view class="info">
+            <view class="line"><label>母亲</label></view>
+            <view class="line"><text>{{detailinfo.motherName}}</text></view>
+          </view>
+        </view>
+      </view>
+      <view class="text-info">
+        <view class="title">生平简介</view>
+        <view class="content">{{detailinfo.description}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="add-member-type {{showAddMember?'active':''}}">
+    <view class="cover"></view>
+    <view class="member-type-content">
+      <view class="member-type-item">
+        <view class="item" data-type="P" catchtap="addMemberByType">
+          <image src="{{baseOss}}/attachment/images/jiapuedit_partners_icon.png"></image>
+          <text>配偶</text>
+        </view>
+      </view>
+      <view class="member-type-item">
+        <view class="item" data-type="C" catchtap="addMemberByType">
+          <image src="{{baseOss}}/attachment/images/jiapuedit_children_icon.png"></image>
+          <text>子女</text>
+        </view>
+      </view>
+      <!--
+      <view class="member-type-item">
+        <view class="item" data-type="B" bindtap="addMemberByType">
+          <image src="{{baseOss}}/attachment/images/jiapuedit_brother_icon.png"></image>
+          <text>兄弟</text>
+        </view>
+      </view>
+      <view class="member-type-item">
+        <view class="item" data-type="S" bindtap="addMemberByType">
+          <image src="{{baseOss}}/attachment/images/jiapuedit_sister_icon.png"></image>
+          <text>姐妹</text>
+        </view>
+      </view>
+      -->
+      <view class="close" style="background-image:url('{{baseOss}}/attachment/images/editjiapu_close_icon.png');" bindtap="closeAddForm"></view>
+    </view>
+  </view>
+  <view class="jiapu-canvas-cover" catchtouchmove='true'>
+    <canvas canvas-id="jiapu_views" class="jiapu-canvas" style="width: {{canvas_css.width}}px; height: {{canvas_css.height}}px;"></canvas>
+  </view>
+  <alert id="alert"/>
+</view>

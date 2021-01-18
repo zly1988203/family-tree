@@ -1,0 +1,12 @@
+/* pages/article/article.wxss */
+.container {
+  background: #fff;
+  padding-top: 25px;
+}
+.page-content {
+  width: 100%;
+  height: calc(100% - 34px);
+}
+.article-content{
+  padding: calc(30vmin / 7.5);
+}

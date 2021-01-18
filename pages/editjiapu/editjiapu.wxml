@@ -1,0 +1,44 @@
+<!--pages/editjiapu/editjiapu.wxml-->
+<view class="container">
+  <view class="title-bar" style="{{showFull?'display:none;':'display:block;'}}">
+    <text>我要修谱</text>
+    <navigator wx:if="{{backBtn}}" open-type="navigateBack" delta="1" hover-class="navigator-hover">返回</navigator>
+    <navigator wx:if="{{!backBtn}}" url="../welcome/welcome" open-type="redirect"  hover-class="navigator-hover">首页</navigator>
+  </view>
+  <view class="page-content" style="{{showFull?'height:100%;border-top:none;':'height:calc(100% - 34px);border-top: 1px solid #f7f7f7;'}}">
+    <view class="frame-nav" style="{{showFull?'display:none;':'display:flex;'}}">
+      <button class="nav-item {{frameID=='tree'?'active':''}}" data-id="tree" bindtap="changeFrame">吊线图</button>
+      <button class="nav-item {{frameID=='circle'?'active':''}}" data-id="circle" bindtap="changeFrame">星系预览</button>
+      <!--
+      <button class="nav-item {{frameID=='table'?'active':''}}" data-id="table" bindtap="changeFrame">人丁表</button>
+      -->
+    </view>
+    <view class="frame-content" id="frame_content" style="{{showFull?'height:100%;':'height:calc(100% - 112vmin / 7.5);'}};">
+      <view class="frame-item {{frameID=='tree'?'active':''}}">
+        <tree-views id="treejiapu" />
+      </view>
+      <view class="frame-item {{frameID=='circle'?'active':''}}" style="background: url('{{baseOss}}/attachment/images/space_bg.jpg') center center no-repeat;background-size: 100% 100%;">
+        <circle-views id="circlejiapu" />
+      </view>
+      <view class="frame-item {{frameID=='table'?'active':''}}">
+        <view style="display:inline-block;width:0;height:100%;vertical-align: middle;"></view>
+        <text style="display:inline-block;width:100%;vertical-align: middle;text-align:center;font-size:calc(32vmin / 7.5);">正在建设中……</text>
+      </view>
+    </view>
+    <view class="sub-operation">
+      <button bindtap="backSelf">
+        <text>返回</text>
+        <text>自己</text>
+      </button>
+      <button bindtap="showSearchForm">搜索</button>
+      <button bindtap="changeFull">
+        <block wx:if="{{!showFull}}">
+          <image src="{{baseOss}}/attachment/images/editjiapu_showfull.png"></image>
+        </block>
+        <block wx:if="{{showFull}}">
+          返回
+        </block>
+      </button>
+    </view>
+  </view>
+</view>

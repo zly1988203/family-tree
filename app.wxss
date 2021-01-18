@@ -1,0 +1,191 @@
+/**app.wxss**/
+page{
+  height: 100%;
+}
+view {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: calc(20vmin / 7.5);
+  position: relative;
+}
+.container {
+  height: 100%;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+} 
+.title-bar{
+  height: 34px;
+  width: 100%;
+  text-align: center;
+}
+.title-bar text{
+  line-height: 34px;
+  font-size: 16px;
+}
+.title-bar navigator,.title-bar .navigator{
+  top: 0;
+  left: calc(20vmin / 7.5);
+  position: absolute;
+  padding-left: calc(30vmin / 7.5);
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+}
+.title-bar navigator:before,.title-bar .navigator:before{
+  content: " ";
+  height: 7px;
+  width: 7px;
+  border: 2px solid #000;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 45%;
+  left: 0;
+}
+.page-content{
+  width:100%;
+  height:calc(100% - 34px - 110vmin / 7.5);
+}
+.page-content.no-nav{
+  width:100%;
+  height:calc(100% - 34px);
+}
+.page-content .main{
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.form-group{
+  font-size: calc(34vmin / 7.5);
+  line-height: calc(110vmin / 7.5);
+  width: 100%;
+}
+.form-group.inside label{
+  position: absolute;
+  width: calc(60vmin / 7.5);
+  height: calc(110vmin / 7.5);
+  line-height: calc(110vmin / 7.5);
+  left: 0;
+  top: 0;
+}
+.form-group.inside .input-group{
+  width: 100%;
+}
+.form-group .form-control{
+  border-color: transparent;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: calc(110vmin / 7.5);
+  font-size: calc(34vmin / 7.5);
+  height: calc(110vmin / 7.5);
+  margin: calc(12vmin / 7.5) 0;
+}
+.form-group.inside .form-control{
+  padding-left: calc(60vmin / 7.5);
+}
+.verify .form-control{
+  padding-right: calc(305vmin / 7.5);
+}
+.btn{
+  font-weight: normal;
+  margin: calc(12vmin / 7.5) 0;
+  background: transparent;
+  border-radius: calc(45vmin / 7.5);
+  height: calc(90vmin / 7.5);
+  line-height: calc(88vmin / 7.5);
+  font-size: calc(34vmin / 7.5);
+  border: 1px solid transparent;
+  padding: 0;
+  width: 100% !important;
+}
+.btn-submit{
+  background: #ebb450;
+  border-color: #ebb450;
+  color: #fff;
+  box-shadow: 0px 1px 5px 0px #ebb450;
+}
+.btn-none{
+  color: #b5b5b5;
+}
+.btn-verify{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(110vmin / 7.5);
+  width: calc(300vmin / 7.5) !important;
+  margin: 0;
+  line-height: calc(110vmin / 7.5);
+}
+.icon{
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto calc(40vmin / 7.5);
+}
+.row{
+  height: calc(98vmin / 7.5);
+  line-height: calc(98vmin / 7.5);
+  font-size: calc(32vmin / 7.5);
+}
+.row navigator,.row .navigator{
+  display: block;
+  width: 100%;
+  height: calc(98vmin / 7.5);
+  line-height: calc(98vmin / 7.5);
+  padding-left: calc(74vmin / 7.5);
+  padding-right: calc(40vmin / 7.5);
+  box-sizing: border-box;
+  position: relative;
+}
+.row navigator:after,.row .navigator:after{
+  content: " ";
+  height: calc(14vmin / 7.5);
+  width: calc(14vmin / 7.5);
+  border: 1px solid #cfcfcf;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 45%;
+  right: calc(20vmin / 7.5);
+}
+.row navigator .icon,.row .navigator .icon{
+  position: absolute;
+  width: calc(36vmin / 7.5);
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.row navigator text,.row .navigator text{
+  color: #333;
+  font-size: calc(32vmin / 7.5);
+}
+.frame-nav{
+  font-size: 0;
+  white-space: nowrap;
+}
+.frame-nav button{
+  display: inline-block;
+}
+.frame-content{
+  width: 100%;
+}
+.frame-content .frame-item{
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.frame-content .frame-item.active{
+  display: block;
+}
+
+/* 遮罩 */
+.zhezhao{position: fixed;top: 146rpx;left: 0;bottom: 0;right: 0;background: #000;opacity: .75;z-index: 11;}

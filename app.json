@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/welcome/welcome",
+    "pages/index/index",
+    "pages/circle/circle",
+    "pages/login/login",
+    "pages/tree/tree",
+    "pages/ebook/ebook",
+    "pages/home/home",
+    "pages/editjiapu/editjiapu",
+    "pages/editmember/editmember",
+    "pages/setting/setting",
+    "pages/changeaccount/changeaccount",
+    "pages/changerole/changerole",
+    "pages/userinfo/userinfo",
+    "pages/accountinfo/accountinfo",
+    "pages/security/security",
+    "pages/initiate_sharing/initiate_sharing",
+    "pages/save_pictures/save_pictures",
+    "pages/help_center/help_center",
+    "pages/extraction_code/extraction_code",
+    "pages/security_setting/security_setting",
+    "pages/bind_tel/bind_tel",
+    "pages/real_name/real_name",
+    "pages/family_culture/family_culture",
+    "pages/family_album/family_album",
+    "pages/share/share",
+    "component/ebook/ebook",
+    "pages/article/article",
+    "pages/order/order"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取用户地理位置方便进行快速定位"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

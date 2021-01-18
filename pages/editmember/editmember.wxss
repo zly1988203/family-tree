@@ -1,0 +1,281 @@
+/* pages/eidtmember/editmember.wxss */
+.container {
+  background: #fff;
+  padding-top: 25px;
+}
+.hide{
+  display: none;
+}
+.page-content {
+  width: 100%;
+  height: calc(100% - 34px);
+}
+.page-content .main{
+  background: #fff;
+  padding-bottom: 200rpx;
+}
+.avatar{
+  width: 100%;
+  padding-top: calc(20vmin / 7.5);
+  height: calc(206vmin / 7.5);
+  text-align: center;
+  background: #fff;
+}
+.avatar image{
+  width: calc(100vmin / 7.5);
+  height: calc(100vmin / 7.5);
+  border-radius: 50%;
+  border: 1px solid #8b624a;
+}
+.avatar text{
+  display: block;margin-top: 20rpx;
+  text-align: center;
+  font-size: calc(26vmin / 7.5);
+  color: #696969;
+}
+.page-content .main .title-bar{
+  text-align: left;
+  padding: 0 calc(30vmin / 7.5);
+  height: calc(76vmin / 7.5);
+  line-height: calc(76vmin / 7.5);
+  color:#696969;display: flex;justify-content: space-between;background: #f7f7f7;
+}
+.page-content .main .title-bar label{margin-right: 20rpx;font-size: calc(26vmin / 7.5);}
+.page-content .main .title-bar view{font-size: calc(26vmin / 7.5);}
+.page-content .main .title-bar text{
+  height: calc(74vmin / 7.5);
+  line-height: calc(74vmin / 7.5);
+  font-size: calc(28vmin / 7.5);
+  color:#ebb450;
+}
+.form-content{
+  background: #fff;
+  padding: calc(10vmin / 7.5) 0;
+}
+.form-group{
+  height: calc(96vmin / 7.5);
+  line-height: calc(96vmin / 7.5);
+}
+.row_1_2{
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.form-group.inside .row_1_2 label{
+  left: 0;
+}
+.form-group .required label::after,.form-group.required label::after{
+  content: "*";
+  color: #ea3939;
+}
+.form-group .form-control{
+  height: calc(96vmin / 7.5);
+  line-height: calc(96vmin / 7.5);
+  font-size: calc(30vmin / 7.5);
+  margin: 0;
+}
+.form-group .form-control .picker{
+  font-size: calc(30vmin / 7.5);
+  color: #8e8e8e;
+  padding-right: calc(42vmin / 7.5);
+  text-align: right;
+  height: calc(96vmin / 7.5);
+  line-height: calc(96vmin / 7.5);
+}
+.form-group .input-group.picker .form-control{
+  text-align: right;
+}
+.form-group .form-control .picker::after,.form-group .input-group.picker .btn::before{
+  content: " ";
+  height: calc(14vmin / 7.5);
+  width: calc(14vmin / 7.5);
+  border: 1px solid #8e8e8e;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 45%;
+  right: calc(24vmin / 7.5);
+}
+.form-group .input-group.picker .btn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: calc(96vmin / 7.5)!important;
+  width: calc(42vmin / 7.5)!important;
+  line-height: calc(96vmin / 7.5)!important;
+  margin: 0!important;
+  overflow: hidden;
+}
+.form-group .input-group.picker .btn .picker{
+  display:block;
+  width:100%;
+  height:100%;
+  color: transparent;
+}
+.form-group.inside label{
+  font-size: calc(30vmin / 7.5);
+  height: calc(96vmin / 7.5);
+  line-height: calc(96vmin / 7.5);
+  width: auto;
+  /* left: calc(30vmin / 7.5); */
+  /* text-align: justify;
+  text-justify: distribute-all-lines;
+  text-align-last: justify; */
+  /* padding-right: calc(20vmin / 7.5); */
+  box-sizing: border-box;
+}
+.form-group .input-group.number .form-control,.form-group .input-group.switch .form-control,.form-group .input-group.t_r .form-control{
+  text-align: right;
+}
+.form-group .input-group.number .form-control .btn{
+  display: inline-block!important;
+  height: calc(38vmin / 7.5)!important;
+  width: calc(38vmin / 7.5)!important;
+  border: 1px solid #ececec;
+  border-radius: calc(18vmin / 7.5)!important;
+  vertical-align: middle;
+  margin: 0!important;
+  padding: 0!important;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% auto;
+  min-height: 0!important;
+}
+.form-group .input-group.number .form-control .btn.add{
+  border: 1px solid #ebb450;
+}
+.form-group .input-group.number .form-control input{
+  display: inline-block;
+  vertical-align: middle;
+  height: calc(96vmin / 7.5);
+  line-height: calc(96vmin / 7.5);
+  width: calc(50vmin / 7.5);
+  text-align: center;
+}
+.form-group .input-group.switch .form-control switch,.title-bar switch{
+  height: calc(96vmin / 7.5);
+  zoom:.7;
+}
+.relationship-item{
+  display: inline-block;
+  height: calc(46vmin / 7.5)!important;
+  min-height: 0!important;
+  border-radius: calc(23vmin / 7.5);
+  border: 1px solid #8f8f8f;
+  background: #fff;
+  width: calc(82vmin / 7.5)!important;
+  text-align: center;
+  line-height: calc(44vmin / 7.5 - 2px);
+  white-space: nowrap;
+  margin: calc(13vmin / 7.5) calc(10vmin / 7.5)!important;
+  font-size: calc(26vmin / 7.5);
+  font-weight: normal!important;
+  color:#8f8f8f;
+  padding: 0!important;
+}
+.relationship-item.active{
+  border: 1px solid #ebb450;
+  background: #ebb450;
+  color: #fff;
+}
+.more-btn{
+  position: absolute;
+  right: calc(30vmin / 7.5);
+  top: 0;
+  height: calc(74vmin / 7.5)!important;
+  min-height: 0!important;
+  background:transparent;
+  width: calc(74vmin / 7.5)!important;
+  text-align: center;
+  line-height: calc(74vmin / 7.5 - 2px);
+  margin: 0!important;
+  font-weight: normal!important;
+  padding: 0!important;
+}
+.more-btn::before{
+  content: " ";
+  width: 0;
+  height: 0;
+  box-sizing: content-box;
+  border: calc(11vmin / 7.5) solid transparent;
+  border-bottom-color: #ebb450;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-25%) rotate(180deg);
+}
+.more-btn.acitve::before{
+  transform: translateY(-75%);
+}
+.form-group textarea.form-control,.form-group .vtextarea.form-control{
+  padding: calc(10vmin / 7.5) calc(20vmin / 7.5)!important;
+  height: calc(250vmin / 7.5);
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  line-height: calc(40vmin / 7.5);
+  border-radius: calc(8vmin / 7.5);
+  box-sizing: border-box;
+  overflow-y: auto
+}
+
+.b_list_right picker::before,.zb .right_jj::before{
+  content: " ";
+  height: calc(14vmin / 7.5);
+  width: calc(14vmin / 7.5);
+  border: 1px solid #8e8e8e;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg) translateY(-50%);
+  position: absolute;
+  top: 45%;
+  right: calc(24vmin / 7.5);
+}
+.b_list_right picker{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: calc(96vmin / 7.5)!important;
+  width: calc(42vmin / 7.5)!important;
+  line-height: calc(96vmin / 7.5)!important;
+  margin: 0!important;
+  overflow: hidden;
+}
+.b_list_right picker .picker{
+  display:block;
+  width:100%;
+  height:100%;
+  color: transparent;
+}
+.ds_fl{display: flex;justify-content: space-between;}
+.b_list{margin: 0 30rpx;border-bottom: 1rpx solid #ededed;height: 96rpx;line-height: 96rpx;}
+.b_list .title{font-size: 30rpx;width: 100rpx;}
+.b_list .title text{color: #ea3939;}
+.b_list .b_list_left,.b_list .b_list_right{width: 50%;display: flex;}
+.b_list input{height: 96rpx;line-height: 96rpx;font-size: 26rpx;}
+.b_list .gender{display: flex;justify-content: space-between;}
+.special_relationship{margin:0 30rpx;display:flex;}
+.special_relationship .title{width: 270rpx;font-size: 30rpx;padding-top: 20rpx;}
+/* page .tijiao{width: 100%;background: #fff;position: fixed;bottom: 0;left: 0;height: calc(108vmin / 7.5);z-index: 99;} */
+page .tijiao{width: 100%;}
+page .tijiao view{width: calc(600vmin / 7.5);height: calc(80vmin / 7.5);line-height: calc(80vmin / 7.5);background: #f2ba52;
+  text-align: center;border-radius: calc(40vmin / 7.5);margin-top: calc(15vmin / 7.5);color: #fff;font-size: calc(30vmin / 7.5);}
+.b_list radio-group radio{font-size: 26rpx;margin-left: 20rpx;}
+/* 性别按钮选中后样式 */
+.b_list radio-group radio .wx-radio-input.wx-radio-input-checked {
+  background-color: #ebb450;border-color: #ebb450;overflow: hidden;box-sizing: border-box;}
+.mg_30{width: auto!important;margin: 0 30rpx;}
+/* 设置页面自动页面高度使监听页面滚动函数起作用 */
+page .page-content .main {overflow: auto;}
+/* end */
+.mg_30{width: auto!important;margin: 0 30rpx;border-bottom: 1rpx solid #ededed;}
+.sweet-image{z-index: 999;}
+.form-group .form-control{border-bottom: 0;}
+/* 安葬地址样式 */
+.buryAddr{padding-top: 20rpx;}
+.buryAddr .buryAddr_left{font-size: calc(30vmin / 7.5);}
+.buryAddr .buryAddr_right{width: 76%;}
+.buryAddr .buryAddr_right .picker{font-size: 28rpx;display: flex;justify-content: flex-end;}
+page header .buryAddr_right .picker view{font-size: 28rpx;}
+.buryAddr .buryAddr_right image{width: 34rpx;height: 38rpx;margin-left: 20rpx;}
+.buryAddr .buryAddr_right input{font-size:28rpx;height: 96rpx;text-align: right;}

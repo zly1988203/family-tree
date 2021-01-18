@@ -1,0 +1,6 @@
+{
+  "pageOrientation": "portrait",
+  "usingComponents": {
+    "alert": "../../component/alert/alert"
+  }
+}

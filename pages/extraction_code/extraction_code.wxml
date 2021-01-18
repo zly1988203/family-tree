@@ -1,0 +1,26 @@
+<!--pages/extraction_code/extraction_code.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>邀请修谱</text>
+    <!-- <navigator url="../index/index" hover-class="navigator-hover" open-type="redirect">返回</navigator>  -->
+  </view>
+  <block wx:if='{{is_ok}}'>
+    <view class="header_img">
+      <image src="{{headImg}}"></image>
+    </view>
+    <view class="fx_name">{{data.cereatorUser.firstname}}{{data.cereatorUser.lastname}}</view>
+    <view class="text1">邀请您修谱</view>
+    <view class="contents">{{data.desc}}</view>
+    <view class="btns">
+      <view>提取码</view>
+      <input placeholder="请输入提取码" value="{{value}}" bindinput="tqm" type="number"></input>
+    </view>
+    <view class="btns btn2" bindtap="yz_tqm">立即修谱</view>
+  </block>
+  <view class="shixiao" wx:if='{{!is_ok}}'>
+    <image src="{{baseOss}}/attachment/images/sx_share_icon.png"></image>
+    <view>邀请链接已失效</view>
+    <view>快去联系邀请人吧~</view>
+  </view>
+  <navigator open-type="redirect" url="../welcome/welcome" hover-class="none">返回首页</navigator>
+</view>

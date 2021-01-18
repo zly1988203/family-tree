@@ -1,0 +1,68 @@
+<!--pages/share/share.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>我的分享</text>
+    <navigator hover-class="navigator-hover" open-type="navigateBack" delta="1">返回</navigator>
+  </view>
+  <view class="page-content">
+    <view class="search-form">
+      <view class="form-group inside">
+        <view class="input-group">
+          <input type="text" class="form-control" bindinput="input" data-name="search_form.keywords" value="{{search_form.keywords}}" placeholder="请输入分享节点姓名" />
+        </view>
+        <view class="search-icon" style="background-image:url('{{baseOss}}/attachment/images/index_search_bg.png');"></view>
+      </view>
+      <view class="button-group">
+        <button class="btn btn-search" bindtap="searchShare">搜索</button>
+      </view>
+    </view>
+    <view class="main">
+      <view class="default_icon" wx:if='{{sharelist.list==""}}'>
+        <image src="{{baseOss}}/attachment/images/default_icon.png"></image>
+        <view>暂无分享内容</view>
+      </view>
+      <scroll-view bindscrolltolower='bindscrolltolower' scroll-y='true' bindscroll='bindscroll' style="height:{{height}}px;" wx:if='{{sharelist.list!=""}}'>
+        <block wx:for="{{sharelist.list}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+          <view class="share-item">
+            <view class="top-line">
+              <view class="share-info">
+                <image src="{{item.cereatorUser.headImg}}"></image>
+                <text>{{item.shareTitle}}</text>
+              </view>
+              <text class="share-date">{{item.dateStr}}</text>
+            </view>
+            <view class="middle-line">
+              <view class="member-count">
+                <text class="num">{{item.gatheredNumber}}</text>
+                <text class="tips">采集人数</text>
+              </view>
+              <view class="token-code">
+                <text class="num" bindtap="copy_code" data-code="{{item.shareCode}}">{{item.shareCode}}</text>
+                <text class="tips">提取码</text>
+              </view>
+              <view class="token-reset">
+                <button class="btn btn-reset" data-id="{{idx}}" bindtap="resetToken">重置提取码</button>
+              </view>
+            </view>
+            <view class="bottom-line">
+              <view class="button-group">
+                <button class="btn btn-reset" data-id="{{idx}}" bindtap="cancelShare">
+                  <image src="{{baseOss}}/attachment/images/editjiapu_del_icon.png"></image>
+                  <text>取消</text>
+                </button>
+              </view>
+              <view class="button-group">
+                <button class="btn btn-reset" data-id="{{idx}}" bindtap="shareShare">
+                  <image src="{{baseOss}}/attachment/images/editjiapu_share_icon.png"></image>
+                  <text>分享</text>
+                </button>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class="jiazai" wx:if='{{!sharelist.hasNextPage}}'>没有更多内容了</view>
+        <view class="jiazai" wx:if='{{sharelist.hasNextPage}}'>努力加载中</view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

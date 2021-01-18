@@ -1,0 +1,35 @@
+/* component/navbar/navbar.wxss */
+.nav-bar{
+  height: calc(110vmin / 7.5);
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-top: 1px solid #e8e8e8;
+}
+.nav-bar navigator{
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  padding: calc(13vmin / 7.5) 0 0;
+  background: #fff;
+}
+.nav-bar navigator .icon{
+  width: calc(48vmin / 7.5);
+  height: calc(48vmin / 7.5);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: calc(48vmin / 7.5) calc(48vmin / 7.5);
+  margin: 0 auto;
+}
+.nav-bar navigator text{
+  font-size: calc(24vmin / 7.5);
+  line-height: calc(40vmin / 7.5);
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+.nav-bar navigator.active text{
+  color: #e3a532;
+}

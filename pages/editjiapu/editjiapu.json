@@ -1,0 +1,8 @@
+{
+  "disableScroll": true,
+  "pageOrientation": "portrait",
+  "usingComponents": {
+    "circle-views": "../../component/jiapu/jiapu",
+    "tree-views": "../../component/tree/tree"
+  }
+}

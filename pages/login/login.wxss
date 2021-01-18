@@ -1,0 +1,30 @@
+/* pages/login/login.wxss */
+page{
+  min-height: 100%;
+  height: 100%;
+}
+.container {
+  background: #fff;
+  padding-top: 25px;
+  height: 100%;
+}
+.logo{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%;
+  margin-bottom: 160rpx;
+  height: 105rpx;
+  width: 100%;
+}
+form{
+  width: 585rpx;
+  position: relative;
+  display: block;
+  margin:0 auto;
+}
+.btn-submit.service{
+  margin-top: 46rpx;
+  color: #ebb450;
+  background: #fff;
+  box-shadow: unset;
+}

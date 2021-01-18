@@ -1,0 +1,6 @@
+{
+  "pageOrientation": "portrait",
+  "usingComponents": {
+    "nav-bar": "../../component/navbar/navbar"
+  }
+}

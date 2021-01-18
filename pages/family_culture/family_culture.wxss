@@ -1,0 +1,2 @@
+/* pages/family_culture/family_culture.wxss */
+.container {background: #fff;padding-top: 25px;height: auto;}

@@ -1,0 +1,297 @@
+<!--pages/eidtmember/editmember.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>{{type=='add'?top_title:'编辑成员'}}</text>
+    <navigator open-type="navigateBack" delta="1">返回</navigator>
+  </view>
+  <view class="page-content">
+    <view class="main">
+      <view class="avatar">
+        <image bindtap="changeAvatar" src="{{member.header?member.header:baseOss+'/attachment/images/editmember_avatar_default.jpg'}}"></image>
+        <text>上传真实头像，更方便查找</text>
+      </view>
+      <view class="title-bar">
+        <view>基本信息</view>
+        <view>
+          <label>无法考证</label><switch checked="{{is_examination}}" bindchange="switch1Change" color="#ebb450"/>
+        </view>
+      </view>
+      <view class="form-content">
+        <view class="b_list ds_fl">
+          <view class="b_list_left">
+            <view class="title">姓氏<text>*</text></view>
+            <view class="contents">
+              <input wx:if="{{isSave || (userid && isUpdate)}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.firstname" value="{{member.firstname}}" placeholder="请输入姓氏" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.firstname?member.firstname:''}}</view>
+            </view>
+          </view>
+          <view class="b_list_right">
+            <view class="title">名字<text>*</text></view>
+            <view class="contents">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.lastname" value="{{member.lastname}}" placeholder="请输入名字" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.lastname?member.lastname:''}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="b_list ds_fl" wx:if='{{!is_examination}}'>
+          <view class="b_list_left">
+            <view class="title">字</view>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.zi" value="{{member.zi}}" placeholder="请输入字" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.zi?member.zi:''}}</view>
+            </view>
+          </view>
+          <view class="b_list_right">
+            <block wx:if='{{list}}'>
+              <view class="title">母亲</view>
+              <view class="{{(isSave || (userid && isUpdate))?'picker':'t_r'}}">
+                <block wx:if="{{(isSave || (userid && isUpdate))}}">
+                  <input type="text" class="form-control" placeholder="请选择母亲" style="width:82%" disabled="true" value="{{mother_list[mother_index]?mother_list[mother_index]:''}}"/>
+                  <picker class="btn" bindchange="xuan_mother" value="{{mother_index}}" range="{{mother_list}}">
+                    <view class="picker">
+                    {{mother_list[mother_index]?mother_list[mother_index]:'请选择母亲'}}
+                    </view>
+                  </picker>
+                </block>
+                <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.birthTime?member.birthTime:''}}</view>
+              </view>
+            </block>
+          </view>
+          <!-- <view class="b_list_left">
+            <view class="title">号</view>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.templeTitle" value="{{member.templeTitle}}" placeholder="请输入号" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.templeTitle?member.templeTitle:''}}</view>
+            </view>
+          </view> -->
+        </view>
+        <view class="b_list ds_fl">
+          <view class="b_list_right">
+            <view class="title">性别<text>*</text></view>
+            <view class="contents {{(isSave || (userid && isUpdate))?'':'t_r'}}">
+              <radio-group class="form-control" bindchange="radioChange">
+                <block wx:for="{{sex}}" wx:key="key">
+                  <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                </block>
+              </radio-group>
+            </view>
+          </view>
+          <view class="form-group inside required" style="width:50%;padding-right:100rpx;">
+            <label>排行</label>
+            <view class="input-group number">
+              <view wx:if="{{(isSave || (userid && isUpdate))}}" class="form-control">
+                <button class="btn" style="background-image:url('{{baseOss}}/attachment/images/editmember_sub.png')" bindtap="changeNumber" data-name="member.childOrder" data-type="sub"></button>
+                <input type="text" maxlength="16" bindinput="inputgetName" data-name="member.childOrder" value="{{member.childOrder}}" />
+                <button class="btn add" style="background-image:url('{{baseOss}}/attachment/images/editmember_plus.png')" bindtap="changeNumber" data-name="member.childOrder" data-type="add"></button>
+              </view>
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.childOrder}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="b_list ds_fl" wx:if='{{!is_examination}}'>
+          <view class="b_list_left">
+            <view class="title">辈分</view>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.gName" value="{{member.gName}}" placeholder="请输入辈分" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.gName?member.gName:''}}</view>
+            </view>
+            <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.childOrder?member.childOrder:0}}</view>
+          </view>
+          <view class="b_list_right" wx:if='{{member.isLiving}}'>
+            <view class="title">手机<text>*</text></view>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="number" class="form-control" maxlength="11" bindinput="inputgetName" data-name="member.mobile" value="{{member.mobile}}" placeholder="请输入手机号码" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.mobile?member.mobile:''}}</view>
+            </view>
+            <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.childOrder?member.childOrder:0}}</view>
+          </view>
+        </view>
+        <view class="b_list ds_fl" wx:if='{{!is_examination}}'>
+          <view class="form-group inside required" style="width:50%;">
+            <label>在世</label>
+            <view class="input-group switch" style="padding-right:50rpx;">
+              <view class="form-control">
+                <switch disabled="{{!(isSave || (userid && isUpdate))}}" checked="{{member.isLiving}}" color="#ebb450" bindchange="inputgetName" data-name="member.isLiving"/>
+              </view>
+            </view>
+          </view>
+          <view class="b_list_right">
+            <view class="title">生辰</view>
+            <view class="{{(isSave || (userid && isUpdate))?'picker':'t_r'}}">
+              <block wx:if="{{(isSave || (userid && isUpdate))}}">
+                <input type="text" class="form-control" maxlength="30" bindinput="input_birthTime" value="{{birthTime}}" placeholder="请输入出生日期" style="width:82%"/>
+                <picker mode="date" class="btn" bindchange="birthTime" value="{{birthTime}}">
+                  <view class="picker">
+                  {{birthTime?birthTime:'请选择日期'}}
+                  </view>
+                </picker>
+              </block>
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{birthTime?birthTime:''}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="b_list ds_fl" wx:if='{{!member.isLiving&&!is_examination}}'>
+          <view class="b_list_right">
+            <view class="title">辞世</view>
+            <view class="{{(isSave || (userid && isUpdate))?'picker':'t_r'}}">
+              <block wx:if="{{(isSave || (userid && isUpdate))}}">
+                <input type="text" class="form-control" maxlength="30" bindinput="input_deathTime" value="{{deathTime}}" placeholder="请输入辞世日期" style="width:82%"/>
+                <picker mode="date" class="btn" bindchange="deathTime" value="{{deathTime}}">
+                  <view class="picker">
+                  {{deathTime?deathTime:'请选择日期'}}
+                  </view>
+                </picker>
+              </block>
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{deathTime?deathTime:''}}</view>
+            </view>
+          </view>
+          <view class="b_list_right">
+            <view class="title">享年</view>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="number" class="form-control" maxlength="16" bindinput="input_age" value="{{age}}" placeholder="请输入享年" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{age?age:''}}</view>
+            </view>
+            <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{age?age:''}}</view>
+            </view>
+          </view>
+        <view class="form-group inside mg_30" style="height:auto;" wx:if='{{!is_examination}}'>
+          <label>祖籍地址</label>
+          <view class="input-group t_r">
+            <block wx:if="{{(isSave || (userid && isUpdate))}}">
+              <input type="text" class="form-control" bindinput="inputgetName" data-name="member.originAreaDetails" value="{{member.originAreaDetails}}" placeholder="请输入详细地址" />
+            </block>
+          </view>
+        </view>
+        <view class="inside mg_30 buryAddr ds_fl" style="height:auto;" wx:if='{{!member.isLiving&&!is_examination}}'>
+          <view class="buryAddr_left">安葬地址</view>
+          <view class="buryAddr_right">
+            <view class="picker" bindtap="openLocation">
+              <view wx:if='{{buryAddr==""||buryAddr==null}}' style='color:#8F8F8F'>未定位</view>
+              <view wx:else>已定位</view>
+              <image src="{{baseOss}}/attachment/images/success_icon.png"></image>
+            </view>
+            <input bindinput="input_buryAddr" value="{{buryAddr}}" placeholder="请输入安葬地址"></input>
+          </view>
+        </view>
+        <view class="special_relationship" style="height:auto;overflow:hidden" wx:if='{{!is_examination}}'>
+          <view class="title">特殊关系</view>
+          <view class="">
+            <block wx:for="{{relationshipList}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+              <button class="relationship-item {{item.code==member.other?'active':''}}" data-id="{{idx}}" bindtap="selectRelationship">{{item.name}}</button>
+            </block>
+          </view>
+        </view>
+        <view class="form-group inside mg_30" style="height:auto;" wx:if='{{is_examination}}'>
+          <label>待考证说明</label>
+          <view class="input-group t_r">
+            <view class="form-control" style="border:none;color:#8e8e8e;">500字以内</view>
+          </view>
+          <textarea type="text" auto-focus="true" wx:if="{{showtextarea}}" bindblur="showArea" data-show="yes"  class="form-control" bindinput="inputgetName" data-name="member.description" maxlength="500" value="{{member.description}}" placeholder="描述一下此人的生平事迹吧~" ></textarea>
+          <view wx:if="{{!showtextarea}}" class="vtextarea form-control" style='color:{{member.description?"#333":"#8f8f8f"}};white-space:pre-line;' data-show="no" bindtap="showArea">{{member.description?member.description:"描述一下此人的生平事迹吧~"}}</view>
+        </view>
+      </view>
+      <view class="title-bar" bindtap="changeShowMore" wx:if='{{!is_examination}}'>
+        <text>更多信息</text>
+        <button class="more-btn {{showmore?'acitve':''}}"></button>
+      </view>
+      <block wx:if="{{showmore&&!is_examination}}">
+        <view class="form-content">
+          <view class="form-group inside mg_30" wx:if='{{member.isLiving}}'>
+            <label>身份证</label>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="18" bindinput="inputgetName" data-name="member.idCard" value="{{member.idCard}}" placeholder="请输入身份证号码" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.idCard?member.idCard:''}}</view>
+            </view>
+          </view>
+          <view class="form-group inside mg_30" wx:if='{{member.isLiving}}'>
+            <label>姓名</label>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.cardName" value="{{member.cardName}}" placeholder="请输入身份证上的姓名" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.cardName?member.cardName:''}}</view>
+            </view>
+          </view>
+          <view class="b_list ds_fl" wx:if='{{!member.isLiving}}'>
+            <!-- <view class="b_list_left">
+              <view class="title">别名</view>
+              <view class="input-group t_r">
+                <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.zi" value="{{member.zi}}" placeholder="请输入字" />
+                <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.zi?member.zi:''}}</view>
+              </view>
+            </view> -->
+            <view class="b_list_left">
+              <view class="title">谥号</view>
+              <view class="input-group t_r">
+                <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.templeTitle" value="{{member.templeTitle}}" placeholder="请输入谥号" />
+                <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.templeTitle?member.templeTitle:''}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="form-group inside mg_30" style="height:auto;" wx:if='{{member.isLiving}}'>
+            <label>居住地址</label>
+            <view class="input-group t_r">
+              <block wx:if="{{(isSave || (userid && isUpdate))}}">
+                <picker class="form-control" mode="region" data-name="member.liveArea" bindchange="inputgetName" value="{{member.liveArea}}" style="border:none;">
+                  <view class="picker">
+                    {{member.liveArea?member.liveArea[0] + ',' + member.liveArea[1] + ',' + member.liveArea[2]:'请选择地址'}}
+                  </view>
+                </picker>
+                <input type="text" class="form-control" bindinput="inputgetName" data-name="member.liveDetails" value="{{member.liveDetails}}" placeholder="详细地址：区、镇、街道" />
+              </block>
+              <block wx:if="{{!(isSave || (userid && isUpdate))}}">
+                <view class="form-control" style="border:none;">{{member.liveArea?member.liveArea[0] + ',' + member.liveArea[1] + ',' + member.liveArea[2]:''}}</view>
+                <view class="form-control">{{member.liveDetails?member.liveDetails:''}}</view>
+              </block>
+            </view>
+          </view>
+          <view class="form-group inside mg_30" style="height:auto;">
+            <label>出生地址</label>
+            <view class="input-group t_r">
+              <block wx:if="{{(isSave || (userid && isUpdate))}}">
+                <picker class="form-control" mode="region" data-name="member.birthArea" bindchange="inputgetName" value="{{member.birthArea}}" style="border:none;">
+                  <view class="picker">
+                    {{member.birthArea?member.birthArea[0] + ',' + member.birthArea[1] + ',' + member.birthArea[2]:'请选择地址'}}
+                  </view>
+                </picker>
+                <input type="text" class="form-control" bindinput="inputgetName" data-name="member.birthAreaDetails" value="{{member.birthAreaDetails}}" placeholder="详细地址：区、镇、街道" />
+              </block>
+              <block wx:if="{{!(isSave || (userid && isUpdate))}}">
+                <view class="form-control" style="border:none;">{{member.birthArea?member.birthArea[0] + ',' + member.birthArea[1] + ',' + member.birthArea[2]:''}}</view>
+                <view class="form-control">{{member.birthAreaDetails?member.birthAreaDetails:''}}</view>
+              </block>
+            </view>
+          </view>
+          <view class="b_list ds_fl" wx:if='{{member.isLiving}}'>
+            <view class="title">民族</view>
+            <view class="input-group t_r">
+              <!-- <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="member.nation" value="{{member.nation}}" placeholder="请输入所属民族" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.nation?member.nation:''}}</view> -->
+              <picker value='{{index}}' range="{{nation_list}}" bindchange="nation_list">
+                <view class="picker" style='font-size:26rpx;'>当前选择：{{nation_list[index]}}</view>
+              </picker>
+            </view>
+          </view>
+          <view class="form-group inside mg_30" wx:if='{{member.isLiving}}'>
+            <label>邮箱</label>
+            <view class="input-group t_r">
+              <input wx:if="{{(isSave || (userid && isUpdate))}}" type="text" class="form-control" maxlength="30" bindinput="inputgetName" data-name="member.mailbox" value="{{member.mailbox}}" placeholder="请输入邮箱号" />
+              <view wx:if="{{!(isSave || (userid && isUpdate))}}" class="form-control">{{member.mailbox?member.mailbox:''}}</view>
+            </view>
+          </view>
+          <view class="form-group inside mg_30" style="height:auto;">
+            <label>{{member.isLiving?'个人简介':'考文'}}</label>
+            <view class="input-group t_r">
+              <view class="form-control" style="border:none;color:#8e8e8e;">500字以内</view>
+            </view>
+            <textarea type="text" auto-focus="true" wx:if="{{showtextarea}}" bindblur="showArea" data-show="yes"  class="form-control" bindinput="inputgetName" data-name="member.description" maxlength="500" value="{{member.description}}" placeholder="描述一下此人的生平事迹吧~" ></textarea>
+            <view wx:if="{{!showtextarea}}" class="vtextarea form-control" style='color:{{member.description?"#333":"#8f8f8f"}};white-space:pre-line;' data-show="no" bindtap="showArea">{{member.description?member.description:"描述一下此人的生平事迹吧~"}}</view>
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{(isSave || (userid && isUpdate))}}" class="tijiao" style="padding:0 calc(90vmin / 7.5)">
+          <view bindtap="editSubmit" wx:if='{{is_Submission}}'>提交</view>
+          <view wx:else style="background:#ededed;">提交</view>
+      </view>
+    </view>
+    <alert id="alert"/>
+  </view>
+</view>

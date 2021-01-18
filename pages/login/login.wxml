@@ -1,0 +1,67 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>会员登录</text>
+    <block wx:if="{{backUrl}}">
+      <navigator url="{{backUrl}}" hover-class="navigator-hover" open-type="redirect">返回</navigator>
+    </block>
+  </view>
+  <view style="width:100%;padding-top: 185rpx;height:calc(100% - 34px);">
+    <view class="logo" style=" background-image: url({{logo}});">
+    </view>
+    <form>
+      <block wx:if="{{frameName=='login'}}">
+        <view class="form-group inside">
+          <label class="icon" style="background-image:url('{{icon_phone}}')"></label>
+          <view class="input-group">
+            <input type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="login_form.userName" value="{{login_form.userName}}" placeholder="手机号/帐号" />
+          </view>
+        </view>
+        <view class="form-group inside">
+          <label class="icon" style="background-image:url('{{icon_pwd}}')"></label>
+          <view class="input-group">
+            <input password="true" class="form-control" bindinput="inputgetName" data-name="login_form.pwd" value="{{login_form.pwd}}" maxlength="16" placeholder="密码" />
+          </view>
+        </view>
+        <!--
+        <view class="form-group">
+          <checkbox-group bindchange="inputgetName" data-name="login_form.bindAccount" data-type="checkbox">
+            <label class="checkbox" wx:for="{{login_form.bindAccount}}" wx:key="key">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.text}}
+            </label>
+          </checkbox-group>
+        </view>
+        -->
+      </block>
+      <block wx:if="{{frameName=='forgot'}}">
+        <view class="form-group inside">
+          <label class="icon" style="background-image:url('{{icon_phone}}')"></label>
+          <view class="input-group">
+            <input type="text" class="form-control" maxlength="16" bindinput="inputgetName" data-name="forgot_form.userName" value="{{forgot_form.userName}}" placeholder="手机号/帐号" />
+          </view>
+        </view>
+        <view class="form-group inside">
+          <label class="icon" style="background-image:url('{{icon_pwd}}')"></label>
+          <view class="input-group verify">
+            <input class="form-control" bindinput="inputgetName" data-name="forgot_form.verify" value="{{forgot_form.verify}}" maxlength="16" placeholder="验证码" />
+            <button class="btn btn-verify" bindtap="getVerify">{{forgot_form.verifyTime>0?forgot_form.verifyTime+'s':'获取验证码'}}</button>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{frameName=='login'}}">
+        <view class="form-group" style="margin-top:calc(70vmin / 7.5);">
+          <button class="btn btn-submit" bindtap="loginSubmit" data-type="1">家谱用户登录</button>
+          <button class="btn btn-submit service" bindtap="loginSubmit" data-type="2">服务商登录</button>
+          <button class="btn btn-none" bindtap="changeFrame" data-id="forgot">忘记密码？</button>
+        </view>
+      </block>
+      <block wx:if="{{frameName=='forgot'}}">
+        <view class="form-group" style="margin-top:60rpx;">
+          <button class="btn btn-submit" bindtap="forgotSubmit">找回密码</button>
+          <button class="btn btn-none" bindtap="changeFrame" data-id="login">立即登录</button>
+        </view>
+      </block>
+    </form>
+    <alert id="alert"/>
+  </view>
+</view>

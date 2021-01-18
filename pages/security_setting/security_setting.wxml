@@ -1,0 +1,30 @@
+<!--pages/security_setting/security_setting.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>安全设置</text>
+    <navigator hover-class="navigator-hover" open-type="navigateBack" delta="1">返回</navigator>
+  </view>
+</view>
+<view class="bodys">
+  <navigator class="help_list" url="../security/security" hover-class="none">
+    <view>设置密码</view>
+    <view class="rights">
+      <view class="password">修改密码</view>
+      <view class="right_icon"></view>
+    </view>
+  </navigator>
+  <navigator class="help_list" url="../bind_tel/bind_tel?tel={{tel}}" open-type="navigate" hover-class="none">
+    <view>绑定手机</view>
+    <view class="rights">
+      <view class="password">{{tel}}</view>
+      <view class="right_icon"></view>
+    </view>
+  </navigator>
+  <view bindtap='bindWeChat' class="help_list" hover-class="none">
+    <view>绑定微信</view>
+    <view class="rights">
+      <view class="password">{{nickName}}</view>
+      <view class="right_icon"></view>
+    </view>
+  </view>
+</view>

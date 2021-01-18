@@ -1,0 +1,60 @@
+<!--pages/home/home.wxml-->
+<view class="container" style="background-image:url('{{baseOss}}/attachment/images/index_top_bg.jpg');">
+  <view class="title-bar">
+    <text>名门修谱</text>
+  </view>
+  <view class="page-content">
+    <view class="main">
+      <view class="search-form">
+        <view class="form-group inside">
+          <view class="input-group">
+            <input type="text" class="form-control" bindinput="inputgetName" data-name="search_form.keywords" value="{{search_form.keywords}}" placeholder="请输入姓氏、堂号等关键词" />
+          </view>
+          <button style="background-image:url('{{baseOss}}/attachment/images/index_search_bg.png');"></button>
+        </view>
+        <view class="help-block">
+          <label>热搜词</label>
+          <view class="keywords-group">
+            <block wx:for="{{hot_list}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+              <navigator url="{{item.url}}" open-type="redirect">
+                {{item.keywords}}
+              </navigator>
+            </block>
+          </view>
+        </view>
+      </view>
+      <view class="nav-group">
+        <view class="item" bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../editjiapu/editjiapu">
+          <image src="{{baseOss}}/attachment/images/home_editjiapu_icon.png"></image>
+          <text>修谱</text>
+        </view>
+        <view class="item" bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../circle/circle">
+          <image src="{{baseOss}}/attachment/images/home_circle_icon.png"></image>
+          <text>星系谱</text>
+        </view>
+        <view class="item" bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../tree/tree">
+          <image src="{{baseOss}}/attachment/images/home_tree_icon.png"></image>
+          <text>家谱树</text>
+        </view>
+        <view class="item" class="item" bindtap="authRun" data-auth="checkUser" data-authed="doNav" data-url="../ebook/ebook">
+          <image src="{{baseOss}}/attachment/images/home_ebook_icon.png"></image>
+          <text>电子谱</text>
+        </view>
+      </view>
+      <view class="add-swiper">
+        <swiper duration="200" previous-margin="0rpx" next-margin="0rpx" autoplay="{{true}}" bindchange="currentHandle" circular="{{false}}" class="swiper-out">
+          <block wx:for="{{addList}}" wx:key="index">
+            <swiper-item class="swp-item {{current === index ?'active-item': ''}}">
+              <view class="slide-image" style=" background: url({{item.imageUrl}}) no-repeat center center;background-size: 100% 100%;" id="{{index}}" data-idx="{{index}}" bindtap="handleAddTap"></view>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="swp-dot">
+          <view class="square-12 m-r-8 {{current === index ?'active': ''}}" wx:for="{{addList}}" wx:key="index"></view>
+        </view>
+      </view>
+    </view>
+    <alert id="alert"/>
+  </view>
+  <nav-bar id="nav-bar" />
+</view>

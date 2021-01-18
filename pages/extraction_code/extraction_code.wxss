@@ -1,0 +1,15 @@
+/* pages/extraction_code/extraction_code.wxss */
+.container {padding-top: 25px;}
+view{text-align: center;font-size: 32rpx;color: #333;}
+.header_img{margin-top: 80rpx;}
+.header_img image{width: 102rpx;height: 102rpx;border-radius: 50%;}
+.fx_name{color: #696969;font-size: 28rpx;line-height: 60rpx;}
+.contents{margin: 40rpx 90rpx 90rpx 90rpx;text-align: left;font-size: 28rpx;}
+.btns{width: 584rpx;margin: 0 auto;height: 102rpx;line-height: 102rpx;background: #f5f5f5;border-radius: 52rpx;
+  overflow: hidden;}
+.btns view{width: 170rpx;float: left;color: #696969;}
+.btns input{text-align: left;float: left;height: 102rpx;}
+.btn2{background: #ebb450;font-size: 34rpx;color: #fff;margin: 50rpx auto;}
+page .shixiao{margin: 220rpx auto;margin-bottom: 60rpx;text-align: center;color: #696969;font-size: 36rpx;}
+.shixiao image{width: 200rpx;height: 200rpx;margin-bottom: 20rpx;}
+page navigator{text-align: center;color: #ebb450;font-size: 36rpx;}

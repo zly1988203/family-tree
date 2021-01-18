@@ -1,0 +1,10 @@
+<!--pages/ebook/ebook.wxml-->
+<view class="container">
+  <view class="title-bar">
+    <text>电子谱查看</text>
+    <navigator hover-class="navigator-hover" open-type="navigateBack" delta="1">返回</navigator>
+  </view>
+  <view class="ebook_page" style="height:calc(100% - 34px);display:block;width:100%;padding:0;background: url('{{baseOss}}/attachment/images/ebook_bg.jpg') center center repeat;overflow:hidden">
+      <jiapu-views id="jiapu" />
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "disableScroll":true,
+  "pageOrientation": "landscape",
+  "usingComponents": {
+    "jiapu-views": "../../component/jiapu/jiapu"
+  }
+}
